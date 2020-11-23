@@ -31,3 +31,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - https://fireship.io/courses/angular
 
 - https://dev.to/qarunqb/angular-material-handbook-setup-and-basics-3ie0
+
+### BrowserModule vs. CommonModule
+
+- https://stackoverflow.com/questions/49662864/commonmodule-vs-browsermodule-in-angular#:~:text=BrowserModule%20provides%20services%20that%20are,such%20as%20NgIf%20and%20NgFor.

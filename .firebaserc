@@ -1,0 +1,11 @@
+{
+  "targets": {
+    "firestarterdemo-af8af": {
+      "hosting": {
+        "firestarter-demo": [
+          "firestarterdemo-af8af"
+        ]
+      }
+    }
+  }
+}

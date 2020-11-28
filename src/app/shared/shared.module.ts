@@ -7,11 +7,13 @@ import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { MatToolbarModule } from '@angular/material/toolbar';
+import { RouterModule } from '@angular/router';
 import { ShellComponent } from './shell/shell.component';
 
 const components = [ShellComponent];
 const modules = [
   CommonModule,
+  RouterModule,
   MatButtonModule,
   MatToolbarModule,
   MatIconModule,

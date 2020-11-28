@@ -32,6 +32,16 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 - https://dev.to/qarunqb/angular-material-handbook-setup-and-basics-3ie0
 
+### Positronx - auth tutorial
+
+- https://www.positronx.io/angular-firebase-google-login-auth-system-tutorial/
+- https://www.positronx.io/how-to-sign-out-from-angular-app-using-firebase-auth-service/
+
+### Import firebase auth error
+
+- Following compatibility updates, you must now import firebase like this [ import firebase from 'firebase/app'; ]
+- https://github.com/angular/angularfire/issues/2622
+
 ### BrowserModule vs. CommonModule
 
 - https://stackoverflow.com/questions/49662864/commonmodule-vs-browsermodule-in-angular#:~:text=BrowserModule%20provides%20services%20that%20are,such%20as%20NgIf%20and%20NgFor.

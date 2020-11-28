@@ -13,7 +13,7 @@ export class ShellComponent implements OnInit {
     .observe([Breakpoints.Handset])
     .pipe(
       map((result) => result.matches),
-      shareReplay() //  To make sure multip asyn pipes are listening to same observable
+      shareReplay() //  To make sure multiple async pipes are listening to same observable
     );
 
   constructor(private breakpointObserver: BreakpointObserver) {}

@@ -49,3 +49,7 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 ### Architecture
 
 - https://medium.com/@cyrilletuzi/architecture-in-angular-projects-242606567e40
+
+### Typescript
+
+- https://dev.to/vborodulin/ts-how-to-override-properties-with-type-intersection-554l

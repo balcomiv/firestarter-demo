@@ -1,10 +1,11 @@
 <div
+  *ngIf="boards; else noBoardList"
   class="boards"
   cdkDropList
   cdkDropListOrientation="horizontal"
   (cdkDropListDropped)="drop($event)"
 >
-  <app-board>
+  <app-board *ngFor="let board of boards" cdkDrag [board]="board">
     <mat-icon>drag_indicator</mat-icon>
   </app-board>
 
@@ -20,3 +21,6 @@
     </button>
    -->
 </div>
+<ng-template #noBoardList>
+  <div>No Boards Loaded</div>
+</ng-template>

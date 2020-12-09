@@ -1,5 +1,6 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, OnDestroy, OnInit } from '@angular/core';
+import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { Board } from '../../board.interface';
 import { BoardService } from '../../services/board.service';
@@ -13,7 +14,7 @@ export class BoardListComponent implements OnInit, OnDestroy {
   boards?: Board[];
   sub?: Subscription;
 
-  constructor(private boardService: BoardService) {}
+  constructor(private boardService: BoardService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
     this.sub = this.boardService
@@ -38,4 +39,22 @@ export class BoardListComponent implements OnInit, OnDestroy {
     moveItemInArray(this.boards, event.previousIndex, event.currentIndex);
     this.boardService.sortBoards(this.boards);
   }
+
+  // openBoardDialog(): void {
+  //   const dialogRef = this.dialog.open(BoardDialogComponent, {
+  //     width: '400px',
+  //     data: {},
+  //   });
+
+  //   dialogRef.afterClosed().subscribe((result) => {
+  //     if (!result) {
+  //       return;
+  //     }
+
+  //     this.boardService.createBoard({
+  //       title: result,
+  //       priority: this.boards?.length,
+  //     });
+  //   });
+  // }
 }

@@ -40,21 +40,19 @@ export class BoardListComponent implements OnInit, OnDestroy {
     this.boardService.sortBoards(this.boards);
   }
 
-  // openBoardDialog(): void {
-  //   const dialogRef = this.dialog.open(BoardDialogComponent, {
-  //     width: '400px',
-  //     data: {},
-  //   });
+  openBoardDialog(): void {
+    const dialogRef = this.dialog.open(BoardListComponent, {
+      width: '400px',
+      data: {},
+    });
 
-  //   dialogRef.afterClosed().subscribe((result) => {
-  //     if (!result) {
-  //       return;
-  //     }
-
-  //     this.boardService.createBoard({
-  //       title: result,
-  //       priority: this.boards?.length,
-  //     });
-  //   });
-  // }
+    dialogRef.afterClosed().subscribe((result) => {
+      if (result) {
+        this.boardService.createBoard({
+          title: result,
+          priority: this.boards?.length,
+        });
+      }
+    });
+  }
 }

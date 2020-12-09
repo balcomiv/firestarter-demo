@@ -8,9 +8,11 @@ import { SharedModule } from '../shared/shared.module';
 import { BoardListComponent } from './components/board-list/board-list.component';
 import { BoardComponent } from './components/board/board.component';
 import { KanbanRoutingModule } from './kanban-routing.module';
+import { BoardDialogComponent } from './dialogs/board-dialog/board-dialog.component';
+import { TaskDialogComponent } from './dialogs/task-dialog/task-dialog.component';
 
 @NgModule({
-  declarations: [BoardComponent, BoardListComponent],
+  declarations: [BoardComponent, BoardListComponent, BoardDialogComponent, TaskDialogComponent],
   imports: [
     CommonModule,
     KanbanRoutingModule,
@@ -20,5 +22,6 @@ import { KanbanRoutingModule } from './kanban-routing.module';
     MatDialogModule,
     MatButtonToggleModule,
   ],
+  entryComponents: [BoardDialogComponent, TaskDialogComponent],
 })
 export class KanbanModule {}

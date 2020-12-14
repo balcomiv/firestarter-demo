@@ -32,6 +32,8 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 - https://dev.to/qarunqb/angular-material-handbook-setup-and-basics-3ie0
 
+- https://www.digitalocean.com/community/tutorials/testing-angular-with-jasmine-and-karma-part-1
+
 ### Github
 
 - https://github.com/codediodeio/angular-firestarter

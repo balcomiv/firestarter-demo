@@ -1,30 +1,33 @@
 import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
-import { Component, OnDestroy, OnInit } from '@angular/core';
+import { Component, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
-import { Board } from '../../board.interface';
-import { BoardDialogComponent } from '../../dialogs/board-dialog/board-dialog.component';
-import { BoardService } from '../../services/board.service';
+import { Board } from 'src/app/kanban/board.interface';
+import { BoardDialogComponent } from 'src/app/kanban/dialogs/board-dialog/board-dialog.component';
+import { BoardService } from 'src/app/kanban/services/board.service';
 
 @Component({
-  selector: 'app-board-list',
-  templateUrl: './board-list.component.html',
-  styleUrls: ['./board-list.component.scss'],
+  selector: 'app-board-list-container',
+  templateUrl: './board-list-container.component.html',
+  styleUrls: ['./board-list-container.component.scss'],
 })
-export class BoardListComponent implements OnInit, OnDestroy {
+export class BoardListContainerComponent implements OnInit {
   boards?: Board[];
-  sub?: Subscription;
+  boardsSubscription?: Subscription;
+  //  userBoards?: Observable<Board[]>;
 
   constructor(private boardService: BoardService, private dialog: MatDialog) {}
 
   ngOnInit(): void {
-    this.sub = this.boardService
+    this.boardsSubscription = this.boardService
       .getUserBoards()
-      .subscribe((boards) => (this.boards = boards));
+      .subscribe((boards) => {
+        this.boards = boards;
+      });
   }
 
   ngOnDestroy(): void {
-    this.sub?.unsubscribe();
+    this.boardsSubscription?.unsubscribe();
   }
 
   /**
@@ -33,10 +36,11 @@ export class BoardListComponent implements OnInit, OnDestroy {
    */
   drop(event: CdkDragDrop<string[]>): void {
     if (!this.boards) {
-      console.error(`Boards not set!`);
+      console.error('No boards configured!');
       return;
     }
 
+    this.boardService;
     moveItemInArray(this.boards, event.previousIndex, event.currentIndex);
     this.boardService.sortBoards(this.boards);
   }

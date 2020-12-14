@@ -3,14 +3,14 @@
   class="boards"
   cdkDropList
   cdkDropListOrientation="horizontal"
-  (cdkDropListDropped)="drop($event)"
+  (cdkDropListDropped)="onDrop($event)"
 >
   <app-board *ngFor="let board of boards" cdkDrag [board]="board">
     <mat-icon>drag_indicator</mat-icon>
   </app-board>
 
   <div class="board-button">
-    <button mat-raised-button cdkDragDisabled (click)="openBoardDialog()">
+    <button mat-raised-button cdkDragDisabled (click)="onOpenBoardDialog()">
       New Board
     </button>
   </div>

@@ -3,6 +3,7 @@ import { Component, OnDestroy, OnInit } from '@angular/core';
 import { MatDialog } from '@angular/material/dialog';
 import { Subscription } from 'rxjs';
 import { Board } from '../../board.interface';
+import { BoardDialogComponent } from '../../dialogs/board-dialog/board-dialog.component';
 import { BoardService } from '../../services/board.service';
 
 @Component({
@@ -41,7 +42,7 @@ export class BoardListComponent implements OnInit, OnDestroy {
   }
 
   openBoardDialog(): void {
-    const dialogRef = this.dialog.open(BoardListComponent, {
+    const dialogRef = this.dialog.open(BoardDialogComponent, {
       width: '400px',
       data: {},
     });

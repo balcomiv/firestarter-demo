@@ -9,9 +9,11 @@
     <mat-icon>drag_indicator</mat-icon>
   </app-board>
 
-  <button mat-raised-button cdkDragDisabled (click)="openBoardDialog()">
-    New Board
-  </button>
+  <div class="board-button">
+    <button mat-raised-button cdkDragDisabled (click)="openBoardDialog()">
+      New Board
+    </button>
+  </div>
 </div>
 <ng-template #noBoardList>
   <div>No Boards Loaded</div>

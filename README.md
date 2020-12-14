@@ -32,6 +32,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 - https://dev.to/qarunqb/angular-material-handbook-setup-and-basics-3ie0
 
+### Github
+
+- https://github.com/codediodeio/angular-firestarter
+
 ### Positronx - auth tutorial
 
 - https://www.positronx.io/angular-firebase-google-login-auth-system-tutorial/

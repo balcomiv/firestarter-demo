@@ -62,9 +62,7 @@ export class BoardService {
   /**
    * Get all boards owned by current user
    */
-  //  Fix Me -- Type this properly
-  // tslint:disable-next-line: no-any
-  getUserBoards(): Observable<any> {
+  getUserBoards(): Observable<Board[]> {
     return this.afAuth.authState.pipe(
       switchMap((user) => {
         if (user) {

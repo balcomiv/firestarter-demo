@@ -5,14 +5,22 @@ import { FormsModule } from '@angular/forms';
 import { MatButtonToggleModule } from '@angular/material/button-toggle';
 import { MatDialogModule } from '@angular/material/dialog';
 import { SharedModule } from '../shared/shared.module';
-import { BoardListComponent } from './components/board-list/board-list.component';
+import { BoardListContainerComponent } from './components/board-list/container/board-list-container/board-list-container.component';
+import { BoardListPresentationComponent } from './components/board-list/presentation/board-list-presentation.component';
 import { BoardComponent } from './components/board/board.component';
-import { KanbanRoutingModule } from './kanban-routing.module';
 import { BoardDialogComponent } from './dialogs/board-dialog/board-dialog.component';
 import { TaskDialogComponent } from './dialogs/task-dialog/task-dialog.component';
+import { KanbanRoutingModule } from './kanban-routing.module';
 
 @NgModule({
-  declarations: [BoardComponent, BoardListComponent, BoardDialogComponent, TaskDialogComponent],
+  declarations: [
+    BoardComponent,
+    BoardListContainerComponent,
+    BoardListPresentationComponent,
+    BoardDialogComponent,
+    TaskDialogComponent,
+    BoardListContainerComponent,
+  ],
   imports: [
     CommonModule,
     KanbanRoutingModule,

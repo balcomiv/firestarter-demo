@@ -1,5 +1,5 @@
 <app-board-list-presentation
-  [boards]="boards"
+  [boards]="boards | async"
   drop="drop($event)"
   openDialog="openDialog()"
 >

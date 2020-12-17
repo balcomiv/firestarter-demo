@@ -1,5 +1,6 @@
 import { Component, Inject } from '@angular/core';
 import { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';
+import { TaskViewModel } from '../../components/board/container/board-container/board-container.component';
 import { BoardService } from '../../services/board.service';
 
 @Component({
@@ -13,7 +14,7 @@ export class TaskDialogComponent {
   constructor(
     private dialogRef: MatDialogRef<TaskDialogComponent>,
     private boardService: BoardService,
-    @Inject(MAT_DIALOG_DATA) public data: any
+    @Inject(MAT_DIALOG_DATA) public data: TaskViewModel
   ) {}
 
   onNoClick(): void {

@@ -7,10 +7,11 @@ import { MatDialogModule } from '@angular/material/dialog';
 import { SharedModule } from '../shared/shared.module';
 import { BoardListContainerComponent } from './components/board-list/container/board-list-container/board-list-container.component';
 import { BoardListPresentationComponent } from './components/board-list/presentation/board-list-presentation.component';
-import { BoardComponent } from './components/board/board.component';
+import { BoardComponent } from './components/board/presentation/board-presentation.component';
 import { BoardDialogComponent } from './dialogs/board-dialog/board-dialog.component';
 import { TaskDialogComponent } from './dialogs/task-dialog/task-dialog.component';
 import { KanbanRoutingModule } from './kanban-routing.module';
+import { BoardContainerComponent } from './components/board/container/board-container/board-container.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +21,7 @@ import { KanbanRoutingModule } from './kanban-routing.module';
     BoardDialogComponent,
     TaskDialogComponent,
     BoardListContainerComponent,
+    BoardContainerComponent,
   ],
   imports: [
     CommonModule,

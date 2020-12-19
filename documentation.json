@@ -1,0 +1,3117 @@
+{
+    "pipes": [],
+    "interfaces": [
+        {
+            "name": "Board",
+            "id": "interface-Board-e3823e7d77bb9b773ce37975fcff0c02",
+            "file": "src/app/kanban/board.interface.ts",
+            "type": "interface",
+            "sourceCode": "export interface Board {\r\n  id?: string;\r\n  title?: string;\r\n  priority?: number;\r\n  tasks?: Task[];\r\n  uid?: string; //  Fix Me -- Tutorial doesn't have this, but sends it in updates...\r\n}\r\n\r\nexport interface Task {\r\n  description?: string;\r\n  label?: 'purple' | 'blue' | 'green' | 'yellow' | 'red' | 'gray';\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "id",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 2
+                },
+                {
+                    "name": "priority",
+                    "type": "number",
+                    "optional": true,
+                    "description": "",
+                    "line": 4
+                },
+                {
+                    "name": "tasks",
+                    "type": "Task[]",
+                    "optional": true,
+                    "description": "",
+                    "line": 5
+                },
+                {
+                    "name": "title",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 3
+                },
+                {
+                    "name": "uid",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 6
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        },
+        {
+            "name": "Task",
+            "id": "interface-Task-e3823e7d77bb9b773ce37975fcff0c02",
+            "file": "src/app/kanban/board.interface.ts",
+            "type": "interface",
+            "sourceCode": "export interface Board {\r\n  id?: string;\r\n  title?: string;\r\n  priority?: number;\r\n  tasks?: Task[];\r\n  uid?: string; //  Fix Me -- Tutorial doesn't have this, but sends it in updates...\r\n}\r\n\r\nexport interface Task {\r\n  description?: string;\r\n  label?: 'purple' | 'blue' | 'green' | 'yellow' | 'red' | 'gray';\r\n}\r\n",
+            "properties": [
+                {
+                    "name": "description",
+                    "type": "string",
+                    "optional": true,
+                    "description": "",
+                    "line": 10
+                },
+                {
+                    "name": "label",
+                    "type": "\"purple\" | \"blue\" | \"green\" | \"yellow\" | \"red\" | \"gray\"",
+                    "optional": true,
+                    "description": "",
+                    "line": 11
+                }
+            ],
+            "indexSignatures": [],
+            "kind": 150,
+            "methods": []
+        }
+    ],
+    "injectables": [
+        {
+            "name": "BoardService",
+            "id": "injectable-BoardService-21fd0a1c8f5e2a24e726869019af69cf",
+            "file": "src/app/kanban/services/board.service.ts",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "createBoard",
+                    "args": [
+                        {
+                            "name": "data",
+                            "type": "Board"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Promise<DocumentReference<Board>>",
+                    "typeParameters": [],
+                    "line": 24,
+                    "description": "<p>Creates a new board the the current user</p>\n",
+                    "modifierKind": [
+                        120
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "data",
+                            "type": "Board",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "deleteBoard",
+                    "args": [
+                        {
+                            "name": "boardId",
+                            "type": "string"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Promise<void>",
+                    "typeParameters": [],
+                    "line": 36,
+                    "description": "<p>Delete board</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": "boardId",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "getUserBoards",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Observable<Board[]>",
+                    "typeParameters": [],
+                    "line": 65,
+                    "description": "<p>Get all boards owned by current user</p>\n"
+                },
+                {
+                    "name": "removeTask",
+                    "args": [
+                        {
+                            "name": "boardId",
+                            "type": "string"
+                        },
+                        {
+                            "name": "task",
+                            "type": "Task"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Promise<void>",
+                    "typeParameters": [],
+                    "line": 53,
+                    "description": "<p>Remove a specific task from the board</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": "boardId",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "task",
+                            "type": "Task",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "sortBoards",
+                    "args": [
+                        {
+                            "name": "boards",
+                            "type": "Board[]"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 85,
+                    "description": "<p>Run a batch write to change the priority of each board for sorting</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": "boards",
+                            "type": "Board[]",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "updateTasks",
+                    "args": [
+                        {
+                            "name": "boardId",
+                            "type": "string"
+                        },
+                        {
+                            "name": "tasks",
+                            "type": "Task[]"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Promise<void>",
+                    "typeParameters": [],
+                    "line": 43,
+                    "description": "<p>Update the tasks on board</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": "boardId",
+                            "type": "string",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "tasks",
+                            "type": "Task[]",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "description": "",
+            "sourceCode": "import { Injectable } from '@angular/core';\r\nimport { AngularFireAuth } from '@angular/fire/auth';\r\nimport { AngularFirestore, DocumentReference } from '@angular/fire/firestore';\r\nimport firebase from 'firebase/app';\r\nimport { Observable, of } from 'rxjs';\r\nimport { switchMap } from 'rxjs/operators';\r\nimport { Board, Task } from '../board.interface';\r\nimport { Collections } from '../enums/collections.enum';\r\n\r\n//  https://github.com/angular/angularfire/issues/2008\r\n//  https://dev.to/vborodulin/ts-how-to-override-properties-with-type-intersection-554l\r\ntype Override<T1, T2> = Omit<T1, keyof T2> & T2;\r\ntype BoardUpdate = Override<Board, { tasks: firebase.firestore.FieldValue }>;\r\n\r\n@Injectable({\r\n  providedIn: 'root',\r\n})\r\nexport class BoardService {\r\n  constructor(private afAuth: AngularFireAuth, private db: AngularFirestore) {}\r\n\r\n  /**\r\n   * Creates a new board the the current user\r\n   */\r\n  async createBoard(data: Board): Promise<DocumentReference<Board>> {\r\n    const user = await this.afAuth.currentUser;\r\n    return this.db.collection<Board>(Collections.Boards).add({\r\n      ...data,\r\n      uid: user?.uid,\r\n      tasks: [{ description: 'Hello', label: 'yellow' }],\r\n    });\r\n  }\r\n\r\n  /**\r\n   * Delete board\r\n   */\r\n  deleteBoard(boardId: string): Promise<void> {\r\n    return this.db.collection<Board>(Collections.Boards).doc(boardId).delete();\r\n  }\r\n\r\n  /**\r\n   * Update the tasks on board\r\n   */\r\n  updateTasks(boardId: string, tasks: Task[]): Promise<void> {\r\n    return this.db\r\n      .collection<Board>(Collections.Boards)\r\n      .doc(boardId)\r\n      .update({ tasks });\r\n  }\r\n\r\n  /**\r\n   * Remove a specific task from the board\r\n   */\r\n  removeTask(boardId: string, task: Task): Promise<void> {\r\n    return this.db\r\n      .collection<BoardUpdate>(Collections.Boards)\r\n      .doc(boardId)\r\n      .update({\r\n        tasks: firebase.firestore.FieldValue.arrayRemove(task),\r\n      });\r\n  }\r\n\r\n  /**\r\n   * Get all boards owned by current user\r\n   */\r\n  getUserBoards(): Observable<Board[]> {\r\n    return this.afAuth.authState.pipe(\r\n      switchMap((user) => {\r\n        if (user) {\r\n          return this.db\r\n            .collection<Board>(Collections.Boards, (ref) =>\r\n              ref.where('uid', '==', user.uid).orderBy('priority')\r\n            )\r\n            .valueChanges({ idField: 'id' });\r\n        } else {\r\n          //  Note: The tutorial just returned [], not of([])\r\n          return of([]);\r\n        }\r\n      })\r\n    );\r\n  }\r\n\r\n  /**\r\n   * Run a batch write to change the priority of each board for sorting\r\n   */\r\n  sortBoards(boards: Board[]): void {\r\n    const db = firebase.firestore();\r\n    const batch = db.batch();\r\n    const refs = boards.map((b) => db.collection(Collections.Boards).doc(b.id));\r\n\r\n    refs.forEach((ref, i) => batch.update(ref, { priority: i }));\r\n    batch.commit();\r\n  }\r\n}\r\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "afAuth",
+                        "type": "AngularFireAuth"
+                    },
+                    {
+                        "name": "db",
+                        "type": "AngularFirestore"
+                    }
+                ],
+                "line": 18,
+                "jsdoctags": [
+                    {
+                        "name": "afAuth",
+                        "type": "AngularFireAuth",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "db",
+                        "type": "AngularFirestore",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "type": "injectable"
+        },
+        {
+            "name": "SnackService",
+            "id": "injectable-SnackService-6df4f792a6a931724306539025c01de2",
+            "file": "src/app/shared/services/snack.service.ts",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "authError",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12
+                }
+            ],
+            "description": "",
+            "sourceCode": "import { Injectable } from '@angular/core';\nimport { MatSnackBar } from '@angular/material/snack-bar';\nimport { Router } from '@angular/router';\nimport { finalize } from 'rxjs/operators';\n\n@Injectable({\n  providedIn: 'root',\n})\nexport class SnackService {\n  constructor(private snackBar: MatSnackBar, private router: Router) {}\n\n  authError(): void {\n    this.snackBar.open('You must be logged in!', 'OK', { duration: 5000 });\n\n    this.snackBar._openedSnackBarRef\n      ?.onAction()\n      .pipe(\n        finalize(() => {\n          console.log('Finalize');\n          this.router.navigate(['/login']);\n        })\n      )\n      .subscribe(\n        () => {\n          console.log('Subscribed');\n        },\n        (error) => console.log,\n        () => {\n          console.log('Completed');\n        }\n      );\n  }\n}\n",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "snackBar",
+                        "type": "MatSnackBar"
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router"
+                    }
+                ],
+                "line": 9,
+                "jsdoctags": [
+                    {
+                        "name": "snackBar",
+                        "type": "MatSnackBar",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "router",
+                        "type": "Router",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "type": "injectable"
+        }
+    ],
+    "classes": [
+        {
+            "name": "AppPage",
+            "id": "class-AppPage-a0db91bfa3b9914e9048612074084ee6",
+            "file": "e2e/src/app.po.ts",
+            "type": "class",
+            "sourceCode": "import { browser, by, element } from 'protractor';\n\nexport class AppPage {\n  navigateTo(): Promise<unknown> {\n    return browser.get(browser.baseUrl) as Promise<unknown>;\n  }\n\n  getTitleText(): Promise<string> {\n    return element(by.css('app-root .content span')).getText() as Promise<string>;\n  }\n}\n",
+            "properties": [],
+            "methods": [
+                {
+                    "name": "getTitleText",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Promise<string>",
+                    "typeParameters": [],
+                    "line": 8
+                },
+                {
+                    "name": "navigateTo",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Promise<unknown>",
+                    "typeParameters": [],
+                    "line": 4
+                }
+            ],
+            "indexSignatures": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": []
+        }
+    ],
+    "directives": [
+        {
+            "name": "GoogleSigninDirective",
+            "id": "directive-GoogleSigninDirective-7ab46cf6ce3efd40a6e8cecab31017e7",
+            "file": "src/app/user/directives/google-signin.directive.ts",
+            "type": "directive",
+            "description": "",
+            "sourceCode": "import { Directive, HostListener } from '@angular/core';\nimport { AngularFireAuth } from '@angular/fire/auth';\nimport firebase from 'firebase/app';\n\n@Directive({\n  selector: '[appGoogleSignin]',\n})\nexport class GoogleSigninDirective {\n  constructor(private afAuth: AngularFireAuth) {}\n\n  @HostListener('click')\n  onClick(): void {\n    this.afAuth.signInWithPopup(new firebase.auth.GoogleAuthProvider());\n  }\n}\n",
+            "selector": "[appGoogleSignin]",
+            "providers": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "hostBindings": [],
+            "hostListeners": [
+                {
+                    "name": "click",
+                    "args": [],
+                    "argsDecorator": [],
+                    "line": 12
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "afAuth",
+                        "type": "AngularFireAuth"
+                    }
+                ],
+                "line": 8,
+                "jsdoctags": [
+                    {
+                        "name": "afAuth",
+                        "type": "AngularFireAuth",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            }
+        }
+    ],
+    "components": [
+        {
+            "name": "AppComponent",
+            "id": "component-AppComponent-b63487ded749e0cc3cad41c9eea27ea0",
+            "file": "src/app/app.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-root",
+            "styleUrls": [
+                "./app.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./app.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "title",
+                    "defaultValue": "'firestarter-demo'",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 9
+                }
+            ],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component } from '@angular/core';\n\n@Component({\n  selector: 'app-root',\n  templateUrl: './app.component.html',\n  styleUrls: ['./app.component.scss'],\n})\nexport class AppComponent {\n  title = 'firestarter-demo';\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "mat-card {\r\n  min-width: 150px;\r\n  max-width: 500px;\r\n  width: 100%;\r\n  margin: 0 auto;\r\n}\r\n\r\nmat-form-field {\r\n  width: 100%;\r\n  margin-bottom: 16px;\r\n}\r\n\r\n.server-error {\r\n  margin: 8px 0;\r\n}\r\n\r\ninput {\r\n  height: 2em;\r\n  div.mat-form-field-infix {\r\n    padding: 0.3em 0;\r\n    input.mat-input-element {\r\n      vertical-align: top;\r\n    }\r\n  }\r\n}\r\n\r\ndiv.mat-form-field-wrapper {\r\n  padding-bottom: 1.15em;\r\n}\r\n",
+                    "styleUrl": "./app.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "templateData": "<app-shell>\n  <router-outlet></router-outlet>\n</app-shell>\n\n<!-- <button mat-raised-button color=\"primary\">Material Button</button> -->\n"
+        },
+        {
+            "name": "BoardComponent",
+            "id": "component-BoardComponent-4637a5e0fc629338182967a002d0c0e5",
+            "file": "src/app/kanban/components/board/presentation/board-presentation.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-board-presentation",
+            "styleUrls": [
+                "./board-presentation.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./board-presentation.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "board",
+                    "line": 14,
+                    "type": "Board"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "openDialog",
+                    "defaultValue": "new EventEmitter<TaskViewModel | null>()",
+                    "line": 17,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "taskDrop",
+                    "defaultValue": "new EventEmitter<CdkDragDrop<string[]>>()",
+                    "line": 16,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 21
+                },
+                {
+                    "name": "onOpenDialog",
+                    "args": [
+                        {
+                            "name": "task",
+                            "type": "Task",
+                            "optional": true
+                        },
+                        {
+                            "name": "index",
+                            "type": "number",
+                            "optional": true
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 27,
+                    "jsdoctags": [
+                        {
+                            "name": "task",
+                            "type": "Task",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "index",
+                            "type": "number",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "onTaskDrop",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "CdkDragDrop<string[]>"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 23,
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "CdkDragDrop<string[]>",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { CdkDragDrop } from '@angular/cdk/drag-drop';\r\nimport { Component, EventEmitter, Input, OnInit, Output } from '@angular/core';\r\nimport { MatDialog } from '@angular/material/dialog';\r\nimport { Board, Task } from '../../../board.interface';\r\nimport { BoardService } from '../../../services/board.service';\r\nimport { TaskViewModel } from '../container/board-container/board-container.component';\r\n\r\n@Component({\r\n  selector: 'app-board-presentation',\r\n  templateUrl: './board-presentation.component.html',\r\n  styleUrls: ['./board-presentation.component.scss'],\r\n})\r\nexport class BoardComponent implements OnInit {\r\n  @Input() board?: Board;\r\n\r\n  @Output() taskDrop = new EventEmitter<CdkDragDrop<string[]>>();\r\n  @Output() openDialog = new EventEmitter<TaskViewModel | null>();\r\n\r\n  constructor(private boardService: BoardService, private dialog: MatDialog) {}\r\n\r\n  ngOnInit(): void {}\r\n\r\n  onTaskDrop(event: CdkDragDrop<string[]>): void {\r\n    this.taskDrop.emit(event);\r\n  }\r\n\r\n  onOpenDialog(task?: Task, index?: number): void {\r\n    this.openDialog.emit();\r\n  }\r\n}\r\n\r\n//  Fix Me -- Testing Only\r\n//  https://stackoverflow.com/questions/50288205/destructuring-a-function-parameter-object-and-rest\r\n// const arr: [string, number | undefined, number] = ['1', undefined, 3];\r\n\r\n// function Test(a: string, b: number | undefined, c: number) {\r\n//   console.log(a); // 1\r\n//   console.log(b); // 2\r\n//   console.log(c); // 3\r\n// }\r\n\r\n// Test(...arr); // spreading the array into the function\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".outer-card {\r\n  margin: 10px;\r\n  min-width: 300px;\r\n  max-width: 300px;\r\n  padding: 10px;\r\n  background: #212121;\r\n}\r\n\r\n.inner-card {\r\n  margin: 5px 0;\r\n  cursor: pointer;\r\n}\r\n\r\n.cdk-drag-animating {\r\n  transition: transform 300ms ease;\r\n}\r\n\r\n.tasks.cdk-drop-list-dragging .cdk-drag {\r\n  transition: transform 300ms ease;\r\n}\r\n\r\n.cdk-drag-placeholder {\r\n  opacity: 0.5;\r\n}\r\n\r\n.blue {\r\n  background: #71deff;\r\n  color: black;\r\n}\r\n.green {\r\n  background: #36e9b6;\r\n  color: black;\r\n}\r\n.yellow {\r\n  background: #ffcf44;\r\n  color: black;\r\n}\r\n.purple {\r\n  background: #b15cff;\r\n}\r\n.red {\r\n  background: #e74a4a;\r\n}\r\n\r\n.gray {\r\n  background: gray;\r\n  text-decoration: line-through;\r\n}\r\n\r\n.outer-card {\r\n  .handle {\r\n    position: relative;\r\n    top: 5px;\r\n    left: 0;\r\n    cursor: move;\r\n  }\r\n}\r\n",
+                    "styleUrl": "./board-presentation.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "boardService",
+                        "type": "BoardService"
+                    },
+                    {
+                        "name": "dialog",
+                        "type": "MatDialog"
+                    }
+                ],
+                "line": 17,
+                "jsdoctags": [
+                    {
+                        "name": "boardService",
+                        "type": "BoardService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "dialog",
+                        "type": "MatDialog",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<ng-container *ngIf=\"board; else noBoard\">\r\n  <mat-card cdkDrag class=\"outer-card\">\r\n    <mat-icon cdkDragHandle class=\"handle\">drag_indicator</mat-icon>\r\n    <mat-card-header>\r\n      <!-- Slot for the handle -->\r\n      <ng-content></ng-content>\r\n      <mat-card-title>{{ board.title }}</mat-card-title>\r\n      <mat-card-subtitle>{{ board.id }}</mat-card-subtitle>\r\n    </mat-card-header>\r\n\r\n    <div\r\n      class=\"tasks\"\r\n      cdkDropList\r\n      cdkDropListOrientation=\"vertical\"\r\n      (cdkDropListDropped)=\"onTaskDrop($event)\"\r\n    >\r\n      <div\r\n        class=\"inner-card\"\r\n        cdkDrag\r\n        *ngFor=\"let task of board.tasks; let i = index\"\r\n        (click)=\"onOpenDialog(task, i)\"\r\n      >\r\n        <mat-card [ngClass]=\"task.label ? task.label : ''\">{{\r\n          task.description\r\n        }}</mat-card>\r\n      </div>\r\n      <button mat-stroked-button (click)=\"onOpenDialog()\">\r\n        <mat-icon>add</mat-icon>\r\n      </button>\r\n    </div>\r\n  </mat-card>\r\n</ng-container>\r\n<ng-template #noBoard>\r\n  <div>No Board Found!</div>\r\n</ng-template>\r\n"
+        },
+        {
+            "name": "BoardContainerComponent",
+            "id": "component-BoardContainerComponent-abe8390d5ffc749e78f288b259caaa10",
+            "file": "src/app/kanban/components/board/container/board-container/board-container.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-board-container",
+            "styleUrls": [
+                "./board-container.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./board-container.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "board",
+                    "line": 23,
+                    "type": "Board"
+                }
+            ],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "isValidBoard",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "object | undefined"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "Board",
+                    "typeParameters": [],
+                    "line": 85,
+                    "modifierKind": [
+                        112
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "object | undefined",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "isValidTaskViewModel",
+                    "args": [
+                        {
+                            "name": "value",
+                            "type": "object | undefined"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "TaskViewModel",
+                    "typeParameters": [],
+                    "line": 101,
+                    "modifierKind": [
+                        112
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "value",
+                            "type": "object | undefined",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 27
+                },
+                {
+                    "name": "openDialog",
+                    "args": [
+                        {
+                            "name": "task",
+                            "type": "Task",
+                            "optional": true
+                        },
+                        {
+                            "name": "idx",
+                            "type": "number",
+                            "optional": true
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 39,
+                    "jsdoctags": [
+                        {
+                            "name": "task",
+                            "type": "Task",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        },
+                        {
+                            "name": "idx",
+                            "type": "number",
+                            "optional": true,
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "setCloseCallback",
+                    "args": [
+                        {
+                            "name": "dialogRef",
+                            "type": "MatDialogRef<TaskDialogComponent | TaskViewModel>"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 53,
+                    "modifierKind": [
+                        112
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "dialogRef",
+                            "type": "MatDialogRef<TaskDialogComponent | TaskViewModel>",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "taskDrop",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "CdkDragDrop<string[]>"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 29,
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "CdkDragDrop<string[]>",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';\nimport { Component, Input, OnInit } from '@angular/core';\nimport { MatDialog, MatDialogRef } from '@angular/material/dialog';\nimport { Board, Task } from 'src/app/kanban/board.interface';\nimport { TaskDialogComponent } from 'src/app/kanban/dialogs/task-dialog/task-dialog.component';\nimport { BoardService } from 'src/app/kanban/services/board.service';\n\n//  Fix Me - The tutorial doesn't adhere to any strict checking or architecture best practices.\n//  this is a hack, just to move forward with tutorial as is.\nexport type TaskViewModel = {\n  task: Task;\n  isNew: boolean;\n  boardId: string;\n  idx?: number;\n};\n\n@Component({\n  selector: 'app-board-container',\n  templateUrl: './board-container.component.html',\n  styleUrls: ['./board-container.component.scss'],\n})\nexport class BoardContainerComponent implements OnInit {\n  @Input() board?: Board; //  Fix Me, I don't like inputs in a smart container\n\n  constructor(private boardService: BoardService, private dialog: MatDialog) {}\n\n  ngOnInit(): void {}\n\n  taskDrop(event: CdkDragDrop<string[]>): void {\n    if (!(this.board && this.board.id && this.board.tasks)) {\n      console.error('Board/Tasks not set!');\n      return;\n    }\n\n    moveItemInArray(this.board.tasks, event.previousIndex, event.currentIndex);\n    this.boardService.updateTasks(this.board.id, this.board.tasks);\n  }\n\n  openDialog(task?: Task, idx?: number): void {\n    console.log('board', this.board);\n\n    const newTask = { label: 'purple' };\n    const dialogRef = this.dialog.open(TaskDialogComponent, {\n      width: '500px',\n      data: task\n        ? { task: { ...task }, isNew: false, boardId: this.board?.id, idx }\n        : { task: newTask, isNew: true },\n    });\n\n    this.setCloseCallback(dialogRef);\n  }\n\n  private setCloseCallback(\n    dialogRef: MatDialogRef<TaskDialogComponent, TaskViewModel>\n  ): void {\n    dialogRef.afterClosed().subscribe((result) => {\n      console.log({ result });\n      if (result && this.isValidTaskViewModel(result)) {\n        if (!(this.board && this.board.id && this.board.tasks)) {\n          console.error('Invalid board!');\n          return;\n        }\n        if (result.isNew) {\n          this.boardService.updateTasks(this.board.id, [\n            ...this.board.tasks,\n            result.task,\n          ]);\n        } else {\n          if (!result.idx) {\n            console.error('Invalid idx!');\n            return;\n          }\n          const update = this.board.tasks;\n          update.splice(result.idx, 1, result.task);\n          this.boardService.updateTasks(this.board.id, this.board.tasks);\n        }\n      }\n    });\n  }\n\n  //#region TODO: Remove or move to utils if really needed\n\n  //  Fix Me - The tutorial doesn't adhere to any strict checking or architecture best practices.\n  //  this is a hack, just to move forward with tutorial as is.\n  private isValidBoard(value: object | undefined): value is Board {\n    if (!value) {\n      console.error('Board not set!');\n      return false;\n    }\n\n    const board = value as Board;\n    if (!(board && board.id && board.tasks)) {\n      console.error('Board properties not set!');\n      return false;\n    }\n    return true;\n  }\n\n  //  Fix Me - The tutorial doesn't adhere to any strict checking or architecture best practices.\n  //  this is a hack, just to move forward with tutorial as is.\n  private isValidTaskViewModel(\n    value: object | undefined\n  ): value is TaskViewModel {\n    if (!value) {\n      console.error('Task not set!');\n      return false;\n    }\n\n    const taskViewModel = value as TaskViewModel;\n    if (!(taskViewModel && taskViewModel.task)) {\n      console.error('TaskViewModel properties not set!');\n      return false;\n    }\n    return true;\n  }\n  //#endregion\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./board-container.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "boardService",
+                        "type": "BoardService"
+                    },
+                    {
+                        "name": "dialog",
+                        "type": "MatDialog"
+                    }
+                ],
+                "line": 23,
+                "jsdoctags": [
+                    {
+                        "name": "boardService",
+                        "type": "BoardService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "dialog",
+                        "type": "MatDialog",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<app-board-presentation\n  [board]=\"board\"\n  (taskDrop)=\"taskDrop($event)\"\n  (openDialog)=\"openDialog()\"\n></app-board-presentation>\n"
+        },
+        {
+            "name": "BoardDialogComponent",
+            "id": "component-BoardDialogComponent-99d8f7334ab4cb52041acebf7aa95a0e",
+            "file": "src/app/kanban/dialogs/board-dialog/board-dialog.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-board-dialog",
+            "styleUrls": [
+                "./board-dialog.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./board-dialog.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "data",
+                    "type": "any",
+                    "optional": false,
+                    "description": "",
+                    "line": 12,
+                    "decorators": [
+                        {
+                            "name": "Inject",
+                            "stringifiedArguments": "MAT_DIALOG_DATA"
+                        }
+                    ],
+                    "modifierKind": [
+                        114
+                    ]
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "onNoClick",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 15
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, Inject } from '@angular/core';\r\nimport { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';\r\n\r\n@Component({\r\n  selector: 'app-board-dialog',\r\n  templateUrl: './board-dialog.component.html',\r\n  styleUrls: ['./board-dialog.component.scss'],\r\n})\r\nexport class BoardDialogComponent {\r\n  constructor(\r\n    private dialogRef: MatDialogRef<BoardDialogComponent>,\r\n    @Inject(MAT_DIALOG_DATA) public data: any\r\n  ) {}\r\n\r\n  onNoClick(): void {\r\n    this.dialogRef.close();\r\n  }\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./board-dialog.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "dialogRef",
+                        "type": "MatDialogRef<BoardDialogComponent>"
+                    },
+                    {
+                        "name": "data",
+                        "type": "any"
+                    }
+                ],
+                "line": 9,
+                "jsdoctags": [
+                    {
+                        "name": "dialogRef",
+                        "type": "MatDialogRef<BoardDialogComponent>",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "data",
+                        "type": "any",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "templateData": "<!-- Title -->\r\n<h1 mat-dialog-title>Board</h1>\r\n\r\n<!-- Content -->\r\n<div mat-dialog-content>\r\n  <p>What shall we call this board?</p>\r\n  <mat-form-field>\r\n    <input type=\"text\" placeholder=\"title\" matInput [(ngModel)]=\"data.title\" />\r\n  </mat-form-field>\r\n</div>\r\n\r\n<!-- Actions -->\r\n<div mat-dialog-actions>\r\n  <button mat-button (click)=\"onNoClick()\">Cancel</button>\r\n  <button mat-button [mat-dialog-close]=\"data.title\" cdkFocusInitial>\r\n    Create\r\n  </button>\r\n</div>\r\n"
+        },
+        {
+            "name": "BoardListContainerComponent",
+            "id": "component-BoardListContainerComponent-eaa59663e460ddac54d8089a03c2a561",
+            "file": "src/app/kanban/components/board-list/container/board-list-container/board-list-container.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-board-list-container",
+            "styleUrls": [
+                "./board-list-container.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./board-list-container.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "boards",
+                    "type": "Observable<Board[]>",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "drop",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "CdkDragDrop<string[]>"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 45,
+                    "description": "<p>Handles Cdk Drag and Drop Event</p>\n",
+                    "jsdoctags": [
+                        {
+                            "name": {
+                                "pos": 1470,
+                                "end": 1475,
+                                "flags": 0,
+                                "escapedText": "event"
+                            },
+                            "type": "CdkDragDrop<string[]>",
+                            "tagName": {
+                                "pos": 1464,
+                                "end": 1469,
+                                "flags": 0,
+                                "escapedText": "param"
+                            },
+                            "comment": "<p>Cdk Drag/Drop Event</p>\n"
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnDestroy",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 37
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 30
+                },
+                {
+                    "name": "openBoardDialog",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 52
+                },
+                {
+                    "name": "setAfterClosedCallback",
+                    "args": [
+                        {
+                            "name": "dialogRef",
+                            "type": "MatDialogRef<BoardDialogComponent | any>"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 61,
+                    "modifierKind": [
+                        112
+                    ],
+                    "jsdoctags": [
+                        {
+                            "name": "dialogRef",
+                            "type": "MatDialogRef<BoardDialogComponent | any>",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';\r\nimport { Component, OnInit } from '@angular/core';\r\nimport { MatDialog, MatDialogRef } from '@angular/material/dialog';\r\nimport { forkJoin, Observable } from 'rxjs';\r\nimport { take, tap } from 'rxjs/operators';\r\nimport { Board } from 'src/app/kanban/board.interface';\r\nimport { BoardDialogComponent } from 'src/app/kanban/dialogs/board-dialog/board-dialog.component';\r\nimport { BoardService } from 'src/app/kanban/services/board.service';\r\n\r\n@Component({\r\n  selector: 'app-board-list-container',\r\n  templateUrl: './board-list-container.component.html',\r\n  styleUrls: ['./board-list-container.component.scss'],\r\n})\r\nexport class BoardListContainerComponent implements OnInit {\r\n  //  boards?: Board[];\r\n  //  boardsSubscription?: Subscription;\r\n  boards: Observable<Board[]>;\r\n\r\n  constructor(private boardService: BoardService, private dialog: MatDialog) {\r\n    this.boards = this.boardService.getUserBoards().pipe(\r\n      tap(() => console.log('Making call'))\r\n\r\n      //  Fix Me -- Testing Only\r\n      //  shareReplay(1)\r\n    );\r\n    //  this.boards = this.boardService.getUserBoards();\r\n  }\r\n\r\n  ngOnInit(): void {\r\n    //  this.boards = this.boardService.getUserBoards()\r\n    // .subscribe((boards) => {\r\n    //   this.boards = boards;\r\n    // });\r\n  }\r\n\r\n  ngOnDestroy(): void {\r\n    //  this.boardsSubscription?.unsubscribe();\r\n  }\r\n\r\n  /**\r\n   * Handles Cdk Drag and Drop Event\r\n   * @param event Cdk Drag/Drop Event\r\n   */\r\n  drop(event: CdkDragDrop<string[]>): void {\r\n    this.boards.pipe(take(1)).subscribe((boards) => {\r\n      moveItemInArray(boards, event.previousIndex, event.currentIndex);\r\n      this.boardService.sortBoards(boards);\r\n    });\r\n  }\r\n\r\n  openBoardDialog(): void {\r\n    const dialogRef = this.dialog.open(BoardDialogComponent, {\r\n      width: '400px',\r\n      data: {},\r\n    });\r\n\r\n    this.setAfterClosedCallback(dialogRef);\r\n  }\r\n\r\n  private setAfterClosedCallback(\r\n    dialogRef: MatDialogRef<BoardDialogComponent, any>\r\n  ): void {\r\n    const afterClosed = dialogRef.afterClosed();\r\n    const boards = this.boards.pipe(take(1));\r\n\r\n    forkJoin([afterClosed, boards]).subscribe(([result, boards]) => {\r\n      if (result) {\r\n        this.boardService.createBoard({\r\n          title: result,\r\n          priority: boards.length,\r\n        });\r\n      }\r\n    });\r\n  }\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./board-list-container.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "boardService",
+                        "type": "BoardService"
+                    },
+                    {
+                        "name": "dialog",
+                        "type": "MatDialog"
+                    }
+                ],
+                "line": 18,
+                "jsdoctags": [
+                    {
+                        "name": "boardService",
+                        "type": "BoardService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "dialog",
+                        "type": "MatDialog",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<app-board-list-presentation\r\n  [boards]=\"boards | async\"\r\n  (drop)=\"drop($event)\"\r\n  (openBoardDialog)=\"openBoardDialog()\"\r\n>\r\n</app-board-list-presentation>\r\n"
+        },
+        {
+            "name": "BoardListPresentationComponent",
+            "id": "component-BoardListPresentationComponent-c2013d70e2b0c5808825139cd51aa06a",
+            "file": "src/app/kanban/components/board-list/presentation/board-list-presentation.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-board-list-presentation",
+            "styleUrls": [
+                "./board-list-presentation.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./board-list-presentation.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "boards",
+                    "defaultValue": "null",
+                    "line": 19,
+                    "type": "Board[] | null"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "drop",
+                    "defaultValue": "new EventEmitter<CdkDragDrop<string[]>>()",
+                    "line": 21,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "openBoardDialog",
+                    "defaultValue": "new EventEmitter<void>()",
+                    "line": 22,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnChanges",
+                    "args": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 26,
+                    "jsdoctags": [
+                        {
+                            "name": "changes",
+                            "type": "SimpleChanges",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "onDrop",
+                    "args": [
+                        {
+                            "name": "event",
+                            "type": "CdkDragDrop<string[]>"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 33,
+                    "jsdoctags": [
+                        {
+                            "name": "event",
+                            "type": "CdkDragDrop<string[]>",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "onOpenBoardDialog",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 37
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { CdkDragDrop } from '@angular/cdk/drag-drop';\r\nimport {\r\n  Component,\r\n  EventEmitter,\r\n  Input,\r\n  Output,\r\n  SimpleChanges,\r\n} from '@angular/core';\r\nimport { MatDialog } from '@angular/material/dialog';\r\nimport { Board } from '../../../board.interface';\r\nimport { BoardService } from '../../../services/board.service';\r\n\r\n@Component({\r\n  selector: 'app-board-list-presentation',\r\n  templateUrl: './board-list-presentation.component.html',\r\n  styleUrls: ['./board-list-presentation.component.scss'],\r\n})\r\nexport class BoardListPresentationComponent {\r\n  @Input() boards: Board[] | null = null;\r\n\r\n  @Output() drop = new EventEmitter<CdkDragDrop<string[]>>();\r\n  @Output() openBoardDialog = new EventEmitter<void>();\r\n\r\n  constructor(private boardService: BoardService, private dialog: MatDialog) {}\r\n\r\n  ngOnChanges(changes: SimpleChanges): void {\r\n    //  Fix Me -- Testing Only\r\n    // if (changes.boards) {\r\n    //   console.log('===> ngOnChanges()', changes.boards.currentValue);\r\n    // }\r\n  }\r\n\r\n  onDrop(event: CdkDragDrop<string[]>): void {\r\n    this.drop.emit(event);\r\n  }\r\n\r\n  onOpenBoardDialog(): void {\r\n    this.openBoardDialog.emit();\r\n  }\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".boards {\r\n  width: auto;\r\n  padding: 24px;\r\n  display: flex;\r\n  flex-direction: row;\r\n  overflow-x: scroll;\r\n  &::-webkit-scrollbar {\r\n    height: 4px;\r\n    width: 4px;\r\n  }\r\n  &::-webkit-scrollbar-track {\r\n    //    box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);\r\n    background-color: #000;\r\n  }\r\n  &::-webkit-scrollbar {\r\n    width: 3px;\r\n    background-color: #000;\r\n  }\r\n\r\n  &::-webkit-scrollbar-thumb {\r\n    background-color: #f5f5f5;\r\n    border: 2px solid #555555;\r\n  }\r\n\r\n  // .handle {\r\n  //   position: relative;\r\n  //   top: 5px;\r\n  //   left: 0;\r\n  //   cursor: move;\r\n  // }\r\n}\r\n\r\n.cdk-drag-placeholder {\r\n  opacity: 0.2;\r\n  width: 350px;\r\n  border: 5px dashed gray;\r\n  margin: 0 10px;\r\n}\r\n\r\n.cdk-drag-animating {\r\n  transition: transform 300ms ease;\r\n}\r\n\r\n.boards.cdk-drop-list-dragging .cdk-drag {\r\n  transition: transform 300ms ease;\r\n}\r\n\r\n.board-button {\r\n  display: flex;\r\n  flex-direction: column;\r\n  align-items: center;\r\n  justify-content: center;\r\n  border: 5px gray dashed;\r\n  width: 300px;\r\n  padding: 32px;\r\n  height: 350px;\r\n}\r\n",
+                    "styleUrl": "./board-list-presentation.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "boardService",
+                        "type": "BoardService"
+                    },
+                    {
+                        "name": "dialog",
+                        "type": "MatDialog"
+                    }
+                ],
+                "line": 22,
+                "jsdoctags": [
+                    {
+                        "name": "boardService",
+                        "type": "BoardService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "dialog",
+                        "type": "MatDialog",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "templateData": "<div\r\n  *ngIf=\"boards; else noBoardList\"\r\n  class=\"boards\"\r\n  cdkDropList\r\n  cdkDropListOrientation=\"horizontal\"\r\n  (cdkDropListDropped)=\"onDrop($event)\"\r\n>\r\n  <app-board-container cdkDrag *ngFor=\"let board of boards\" [board]=\"board\">\r\n    <!-- <mat-icon cdkDragHandle class=\"handle\">drag_indicator</mat-icon> -->\r\n  </app-board-container>\r\n\r\n  <div class=\"board-button\">\r\n    <button\r\n      mat-raised-button\r\n      color=\"accent\"\r\n      cdkDragDisabled\r\n      (click)=\"onOpenBoardDialog()\"\r\n    >\r\n      New Board\r\n    </button>\r\n  </div>\r\n</div>\r\n<ng-template #noBoardList>\r\n  <div>No Boards Loaded</div>\r\n</ng-template>\r\n\r\n<!-- <div *ngIf=\"boards; else noBoardList\">\r\n  {{ boards | json }}\r\n  Test Test\r\n</div>\r\n<ng-template #noBoardList>\r\n  <div>No Boards Loaded</div>\r\n</ng-template> -->\r\n"
+        },
+        {
+            "name": "ButtonComponent",
+            "id": "component-ButtonComponent-642c6c4e474cd5a0ac760dfda26b2fc9",
+            "file": "src/stories/button.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-button",
+            "styleUrls": [
+                "./button.css"
+            ],
+            "styles": [],
+            "template": "<button   type=\"button\"\n   (click)=\"onClick.emit($event)\"\n   [ngClass]=\"classes\"\n   [ngStyle]=\"{ 'background-color': backgroundColor }\"\n >\n   {{ label }}\n </button>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "backgroundColor",
+                    "description": "<p>What background color to use</p>\n",
+                    "line": 26,
+                    "type": "string"
+                },
+                {
+                    "name": "label",
+                    "defaultValue": "'Button'",
+                    "description": "<p>Button contents</p>\n",
+                    "line": 40
+                },
+                {
+                    "name": "primary",
+                    "defaultValue": "false",
+                    "description": "<p>Is this the principal call to action on the page?</p>\n",
+                    "line": 20
+                },
+                {
+                    "name": "size",
+                    "defaultValue": "'medium'",
+                    "description": "<p>How large should the button be?</p>\n",
+                    "line": 32,
+                    "type": "\"small\" | \"medium\" | \"large\""
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onClick",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "description": "<p>Optional click handler</p>\n",
+                    "line": 46,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-button',\n  template: ` <button\n    type=\"button\"\n    (click)=\"onClick.emit($event)\"\n    [ngClass]=\"classes\"\n    [ngStyle]=\"{ 'background-color': backgroundColor }\"\n  >\n    {{ label }}\n  </button>`,\n  styleUrls: ['./button.css'],\n})\nexport default class ButtonComponent {\n  /**\n   * Is this the principal call to action on the page?\n   */\n  @Input()\n  primary = false;\n\n  /**\n   * What background color to use\n   */\n  @Input()\n  backgroundColor?: string;\n\n  /**\n   * How large should the button be?\n   */\n  @Input()\n  size: 'small' | 'medium' | 'large' = 'medium';\n\n  /**\n   * Button contents\n   *\n   * @required\n   */\n  @Input()\n  label = 'Button';\n\n  /**\n   * Optional click handler\n   */\n  @Output()\n  onClick = new EventEmitter<Event>();\n\n  public get classes(): string[] {\n    const mode = this.primary ? 'storybook-button--primary' : 'storybook-button--secondary';\n\n    return ['storybook-button', `storybook-button--${this.size}`, mode];\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".storybook-button {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-weight: 700;\n  border: 0;\n  border-radius: 3em;\n  cursor: pointer;\n  display: inline-block;\n  line-height: 1;\n}\n.storybook-button--primary {\n  color: white;\n  background-color: #1ea7fd;\n}\n.storybook-button--secondary {\n  color: #333;\n  background-color: transparent;\n  box-shadow: rgba(0, 0, 0, 0.15) 0px 0px 0px 1px inset;\n}\n.storybook-button--small {\n  font-size: 12px;\n  padding: 10px 16px;\n}\n.storybook-button--medium {\n  font-size: 14px;\n  padding: 11px 20px;\n}\n.storybook-button--large {\n  font-size: 16px;\n  padding: 12px 24px;\n}\n",
+                    "styleUrl": "./button.css"
+                }
+            ],
+            "stylesData": "",
+            "accessors": {
+                "classes": {
+                    "name": "classes",
+                    "getSignature": {
+                        "name": "classes",
+                        "type": "[]",
+                        "returnType": "string[]",
+                        "line": 48
+                    }
+                }
+            }
+        },
+        {
+            "name": "EmailLoginComponent",
+            "id": "component-EmailLoginComponent-dd7998c16ead022e1cfb852c2d3eab53",
+            "file": "src/app/user/components/email-login/email-login.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-email-login",
+            "styleUrls": [
+                "./email-login.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./email-login.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "form",
+                    "type": "FormGroup",
+                    "optional": false,
+                    "description": "",
+                    "line": 18
+                },
+                {
+                    "name": "loading",
+                    "defaultValue": "false",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 20
+                },
+                {
+                    "name": "loginType",
+                    "defaultValue": "'login'",
+                    "type": "LoginType",
+                    "optional": false,
+                    "description": "",
+                    "line": 19
+                },
+                {
+                    "name": "serverMessage",
+                    "defaultValue": "''",
+                    "type": "string",
+                    "optional": false,
+                    "description": "",
+                    "line": 21
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "changeType",
+                    "args": [
+                        {
+                            "name": "loginType",
+                            "type": "LoginType"
+                        }
+                    ],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 33,
+                    "jsdoctags": [
+                        {
+                            "name": "loginType",
+                            "type": "LoginType",
+                            "tagName": {
+                                "text": "param"
+                            }
+                        }
+                    ]
+                },
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 25
+                },
+                {
+                    "name": "onSubmit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "Promise<void>",
+                    "typeParameters": [],
+                    "line": 72,
+                    "modifierKind": [
+                        120
+                    ]
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { AngularFireAuth } from '@angular/fire/auth';\nimport {\n  AbstractControl,\n  FormBuilder,\n  FormGroup,\n  Validators,\n} from '@angular/forms';\n\ntype LoginType = 'login' | 'signup' | 'reset';\n\n@Component({\n  selector: 'app-email-login',\n  templateUrl: './email-login.component.html',\n  styleUrls: ['./email-login.component.scss'],\n})\nexport class EmailLoginComponent implements OnInit {\n  form!: FormGroup;\n  loginType: LoginType = 'login';\n  loading = false;\n  serverMessage = '';\n\n  constructor(private afAuth: AngularFireAuth, private fb: FormBuilder) {}\n\n  ngOnInit(): void {\n    this.form = this.fb.group({\n      email: ['', [Validators.required, Validators.email]],\n      password: ['', [Validators.required, Validators.minLength(6)]],\n      passwordConfirm: [''],\n    });\n  }\n\n  changeType(loginType: LoginType): void {\n    this.loginType = loginType;\n  }\n\n  get isLogin(): boolean {\n    return this.loginType === 'login';\n  }\n\n  get isSignup(): boolean {\n    return this.loginType === 'signup';\n  }\n\n  get isPasswordReset(): boolean {\n    return this.loginType === 'reset';\n  }\n\n  get email(): AbstractControl | null {\n    return this.form.get('email');\n  }\n\n  get password(): AbstractControl | null {\n    return this.form.get('password');\n  }\n\n  get passwordConfirm(): AbstractControl | null {\n    return this.form.get('passwordConfirm');\n  }\n\n  get signup(): AbstractControl | null {\n    return this.form.get('signup');\n  }\n\n  get passwordDoesMatch(): boolean {\n    if (this.loginType !== 'signup') {\n      return true;\n    }\n    return this.password?.value === this.passwordConfirm?.value;\n  }\n\n  async onSubmit(): Promise<void> {\n    this.loading = true;\n\n    const email = this.email?.value;\n    const password = this.password?.value;\n\n    try {\n      if (this.isLogin) {\n        await this.afAuth.signInWithEmailAndPassword(email, password);\n      }\n      if (this.isSignup) {\n        await this.afAuth.createUserWithEmailAndPassword(email, password);\n      }\n      if (this.isPasswordReset) {\n        await this.afAuth.sendPasswordResetEmail(email);\n      }\n    } catch (error) {\n      this.serverMessage = error;\n    }\n\n    this.loading = false;\n  }\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "mat-card {\r\n  min-width: 150px;\r\n  max-width: 500px;\r\n  width: 100%;\r\n  margin: 0 auto;\r\n}\r\n\r\nmat-form-field {\r\n  width: 100%;\r\n  margin-bottom: 16px;\r\n}\r\n\r\n.server-error {\r\n  margin: 8px 0;\r\n}\r\n\r\ninput {\r\n  height: 2em;\r\n  div.mat-form-field-infix {\r\n    padding: 0.3em 0;\r\n    input.mat-input-element {\r\n      vertical-align: top;\r\n    }\r\n  }\r\n}\r\ndiv.mat-form-field-wrapper {\r\n  padding-bottom: 1.15em;\r\n}\r\n",
+                    "styleUrl": "./email-login.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "afAuth",
+                        "type": "AngularFireAuth"
+                    },
+                    {
+                        "name": "fb",
+                        "type": "FormBuilder"
+                    }
+                ],
+                "line": 21,
+                "jsdoctags": [
+                    {
+                        "name": "afAuth",
+                        "type": "AngularFireAuth",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "fb",
+                        "type": "FormBuilder",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "accessors": {
+                "isLogin": {
+                    "name": "isLogin",
+                    "getSignature": {
+                        "name": "isLogin",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 37
+                    }
+                },
+                "isSignup": {
+                    "name": "isSignup",
+                    "getSignature": {
+                        "name": "isSignup",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 41
+                    }
+                },
+                "isPasswordReset": {
+                    "name": "isPasswordReset",
+                    "getSignature": {
+                        "name": "isPasswordReset",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 45
+                    }
+                },
+                "email": {
+                    "name": "email",
+                    "getSignature": {
+                        "name": "email",
+                        "type": "",
+                        "returnType": "AbstractControl | null",
+                        "line": 49
+                    }
+                },
+                "password": {
+                    "name": "password",
+                    "getSignature": {
+                        "name": "password",
+                        "type": "",
+                        "returnType": "AbstractControl | null",
+                        "line": 53
+                    }
+                },
+                "passwordConfirm": {
+                    "name": "passwordConfirm",
+                    "getSignature": {
+                        "name": "passwordConfirm",
+                        "type": "",
+                        "returnType": "AbstractControl | null",
+                        "line": 57
+                    }
+                },
+                "signup": {
+                    "name": "signup",
+                    "getSignature": {
+                        "name": "signup",
+                        "type": "",
+                        "returnType": "AbstractControl | null",
+                        "line": 61
+                    }
+                },
+                "passwordDoesMatch": {
+                    "name": "passwordDoesMatch",
+                    "getSignature": {
+                        "name": "passwordDoesMatch",
+                        "type": "boolean",
+                        "returnType": "boolean",
+                        "line": 65
+                    }
+                }
+            },
+            "templateData": "<mat-card>\n  <!-- Sign Up -->\n  <div *ngIf=\"isSignup\">\n    <h3>Create Account</h3>\n    <button mat-stroked-button (click)=\"changeType('login')\">\n      Return User?\n    </button>\n  </div>\n\n  <!-- Login -->\n  <div *ngIf=\"isLogin\">\n    <h3>Sign In</h3>\n    <button size=\"small\" mat-stroked-button (click)=\"changeType('signup')\">\n      New User?\n    </button>\n  </div>\n\n  <!-- Reset Password -->\n  <div *ngIf=\"isPasswordReset\">\n    <h3>Reset Password</h3>\n    <button size=\"small\" mat-button (click)=\"changeType('login')\">Back</button>\n  </div>\n\n  <form [formGroup]=\"form\" (ngSubmit)=\"onSubmit()\">\n    <!-- Email -->\n    <mat-form-field [color]=\"email?.valid && 'accent'\">\n      <input\n        matInput\n        formControlName=\"email\"\n        type=\"email\"\n        placeholder=\"Email\"\n        autocomplete=\"off\"\n      />\n    </mat-form-field>\n    <mat-error *ngIf=\"email?.invalid && email?.dirty\">\n      You must enter a valid email address\n    </mat-error>\n\n    <!-- Password -->\n    <mat-form-field\n      *ngIf=\"!isPasswordReset\"\n      [color]=\"password?.valid && 'accent'\"\n    >\n      <input\n        matInput\n        formControlName=\"password\"\n        type=\"password\"\n        placeholder=\"Password\"\n        autocomplete=\"off\"\n      />\n    </mat-form-field>\n    <mat-error *ngIf=\"password?.invalid && password?.dirty\">\n      Password must be at lest 6 characters long\n    </mat-error>\n\n    <!-- Password Confirm -->\n    <mat-form-field\n      *ngIf=\"isSignup\"\n      [color]=\"passwordDoesMatch ? 'accent' : 'warn'\"\n    >\n      <input\n        matInput\n        formControlName=\"passwordConfirm\"\n        type=\"password\"\n        placeholder=\"Confirm password\"\n        autocomplete=\"off\"\n      />\n    </mat-form-field>\n    <mat-error *ngIf=\"!passwordDoesMatch && passwordConfirm?.dirty\">\n      Password does not match\n    </mat-error>\n\n    <!-- Server Error -->\n    <mat-error>\n      {{ serverMessage }}\n    </mat-error>\n\n    <!-- Password Reset Button -->\n    <button *ngIf=\"isPasswordReset\" mat-raised-button color=\"accent\">\n      Send Reset Email\n    </button>\n\n    <!-- Submit Button -->\n    <button\n      *ngIf=\"!isPasswordReset\"\n      mat-raised-button\n      color=\"accent\"\n      type=\"submit\"\n      [disabled]=\"form.invalid || !passwordDoesMatch || loading\"\n    >\n      Submit\n    </button>\n  </form>\n\n  <button *ngIf=\"isLogin\" mat-button (click)=\"changeType('reset')\">\n    Forgot Password?\n  </button>\n</mat-card>\n"
+        },
+        {
+            "name": "HeaderComponent",
+            "id": "component-HeaderComponent-246e2a69dc126a3bd76c6328dd3b93e2",
+            "file": "src/stories/header.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-header",
+            "styleUrls": [
+                "./header.css"
+            ],
+            "styles": [],
+            "template": "<header>    <div class=\"wrapper\">\n      <div>\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n              fill=\"#FFF\"\n            />\n            <path\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n              fill=\"#555AB9\"\n            />\n            <path\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\n              fill=\"#91BAF8\"\n            />\n          </g>\n        </svg>\n        <h1>Acme</h1>\n      </div>\n      <div>\n        <storybook-button\n          *ngIf=\"user\"\n          size=\"small\"\n          (onClick)=\"onLogout.emit($event)\"\n          label=\"Log out\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          (onClick)=\"onLogin.emit($event)\"\n          label=\"Log in\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          primary\n          size=\"small\"\n          (onClick)=\"onCreateAccount.emit($event)\"\n          label=\"Sign up\"\n        ></storybook-button>\n      </div>\n    </div>\n  </header>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "user",
+                    "defaultValue": "null",
+                    "line": 53,
+                    "type": "unknown"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onCreateAccount",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "line": 62,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogin",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "line": 56,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogout",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "line": 59,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-header',\n  template: `<header>\n    <div class=\"wrapper\">\n      <div>\n        <svg width=\"32\" height=\"32\" viewBox=\"0 0 32 32\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M10 0h12a10 10 0 0110 10v12a10 10 0 01-10 10H10A10 10 0 010 22V10A10 10 0 0110 0z\"\n              fill=\"#FFF\"\n            />\n            <path\n              d=\"M5.3 10.6l10.4 6v11.1l-10.4-6v-11zm11.4-6.2l9.7 5.5-9.7 5.6V4.4z\"\n              fill=\"#555AB9\"\n            />\n            <path\n              d=\"M27.2 10.6v11.2l-10.5 6V16.5l10.5-6zM15.7 4.4v11L6 10l9.7-5.5z\"\n              fill=\"#91BAF8\"\n            />\n          </g>\n        </svg>\n        <h1>Acme</h1>\n      </div>\n      <div>\n        <storybook-button\n          *ngIf=\"user\"\n          size=\"small\"\n          (onClick)=\"onLogout.emit($event)\"\n          label=\"Log out\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          size=\"small\"\n          (onClick)=\"onLogin.emit($event)\"\n          label=\"Log in\"\n        ></storybook-button>\n        <storybook-button\n          *ngIf=\"!user\"\n          primary\n          size=\"small\"\n          (onClick)=\"onCreateAccount.emit($event)\"\n          label=\"Sign up\"\n        ></storybook-button>\n      </div>\n    </div>\n  </header>`,\n  styleUrls: ['./header.css'],\n})\nexport default class HeaderComponent {\n  @Input()\n  user: unknown = null;\n\n  @Output()\n  onLogin = new EventEmitter<Event>();\n\n  @Output()\n  onLogout = new EventEmitter<Event>();\n\n  @Output()\n  onCreateAccount = new EventEmitter<Event>();\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".wrapper {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  border-bottom: 1px solid rgba(0, 0, 0, 0.1);\n  padding: 15px 20px;\n  display: flex;\n  align-items: center;\n  justify-content: space-between;\n}\n\nsvg {\n  display: inline-block;\n  vertical-align: top;\n}\n\nh1 {\n  font-weight: 900;\n  font-size: 20px;\n  line-height: 1;\n  margin: 6px 0 6px 10px;\n  display: inline-block;\n  vertical-align: top;\n}\n\nbutton + button {\n  margin-left: 10px;\n}\n",
+                    "styleUrl": "./header.css"
+                }
+            ],
+            "stylesData": ""
+        },
+        {
+            "name": "HomePageComponent",
+            "id": "component-HomePageComponent-33a2b43aa93aa72c7cb8ddf5360cdca7",
+            "file": "src/app/home/pages/home/home-page.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-home-page",
+            "styleUrls": [
+                "./home-page.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./home-page.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 12
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\n\n@Component({\n  selector: 'app-home-page',\n  templateUrl: './home-page.component.html',\n  styleUrls: ['./home-page.component.scss']\n})\nexport class HomePageComponent implements OnInit {\n\n  constructor() { }\n\n  ngOnInit(): void {\n  }\n\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./home-page.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [],
+                "line": 8
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<p>home-page works!</p>\n"
+        },
+        {
+            "name": "LoginPageComponent",
+            "id": "component-LoginPageComponent-2e1263dbb6f6d7d537011d9ef0b262ba",
+            "file": "src/app/user/pages/login/login-page.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-login",
+            "styleUrls": [
+                "./login-page.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./login-page.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "afAuth",
+                    "type": "AngularFireAuth",
+                    "optional": false,
+                    "description": "",
+                    "line": 15,
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "user$",
+                    "defaultValue": "this.afAuth.authState.pipe(\n    shareReplay() //  To make sure multiple async pipes are listening to same observable\n  )",
+                    "type": "",
+                    "optional": false,
+                    "description": "",
+                    "line": 11
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 17
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, OnInit } from '@angular/core';\nimport { AngularFireAuth } from '@angular/fire/auth';\nimport { shareReplay } from 'rxjs/operators';\n\n@Component({\n  selector: 'app-login',\n  templateUrl: './login-page.component.html',\n  styleUrls: ['./login-page.component.scss'],\n})\nexport class LoginPageComponent implements OnInit {\n  user$ = this.afAuth.authState.pipe(\n    shareReplay() //  To make sure multiple async pipes are listening to same observable\n  );\n\n  constructor(public afAuth: AngularFireAuth) {}\n\n  ngOnInit(): void {}\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "// The text-align property in CSS is used for aligning the inner content\r\n// of a block element.\r\n:host {\r\n  text-align: center;\r\n}\r\n\r\nbutton {\r\n  img {\r\n    width: 1.25em;\r\n  }\r\n}\r\n\r\n.logout {\r\n  padding-top: 5em;\r\n}\r\n",
+                    "styleUrl": "./login-page.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "afAuth",
+                        "type": "AngularFireAuth"
+                    }
+                ],
+                "line": 13,
+                "jsdoctags": [
+                    {
+                        "name": "afAuth",
+                        "type": "AngularFireAuth",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<main>\n  <!-- Logged In -->\n  <div *ngIf=\"!(user$ | async)\">\n    <h1>Login</h1>\n\n    <div>\n      <button mat-raised-button appGoogleSignin>\n        <img src=\"/assets/google-logo.svg\" alt=\"Google google-logo\" />\n        Login with Google\n      </button>\n    </div>\n\n    <h5>Or</h5>\n    <app-email-login></app-email-login>\n  </div>\n\n  <!-- Not Logged In -->\n  <div *ngIf=\"user$ | async as user\" class=\"logout\">\n    <p>\n      Logged in as <strong>{{ user.email }}</strong>\n    </p>\n    <button mat-stroked-button (click)=\"afAuth.signOut()\">Logout</button>\n  </div>\n</main>\n"
+        },
+        {
+            "name": "PageComponent",
+            "id": "component-PageComponent-cca1a8911321fa17756ce90c90de65cc",
+            "file": "src/stories/page.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "storybook-page",
+            "styleUrls": [
+                "./page.css"
+            ],
+            "styles": [],
+            "template": "<article>    <storybook-header\n      [user]=\"user\"\n      (onLogout)=\"onLogout.emit($event)\"\n      (onLogin)=\"onLogin.emit($event)\"\n      (onCreateAccount)=\"onCreateAccount.emit($event)\"\n    ></storybook-header>\n    <section>\n      <h2>Pages in Storybook</h2>\n      <p>\n        We recommend building UIs with a\n        <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n          <strong>component-driven</strong>\n        </a>\n        process starting with atomic components and ending with pages.\n      </p>\n      <p>\n        Render pages with mock data. This makes it easy to build and review page states without\n        needing to navigate to them in your app. Here are some handy patterns for managing page data\n        in Storybook:\n      </p>\n      <ul>\n        <li>\n          Use a higher-level connected component. Storybook helps you compose such data from the\n          \"args\" of child component stories\n        </li>\n        <li>\n          Assemble data in the page component from your services. You can mock these services out\n          using Storybook.\n        </li>\n      </ul>\n      <p>\n        Get a guided tutorial on component-driven development at\n        <a href=\"https://www.learnstorybook.com\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Learn Storybook\n        </a>\n        . Read more in the\n        <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\">\n          docs\n        </a>\n        .\n      </p>\n      <div class=\"tip-wrapper\">\n        <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n        <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n              id=\"a\"\n              fill=\"#999\"\n            />\n          </g>\n        </svg>\n        Viewports addon in the toolbar\n      </div>\n    </section>\n  </article>",
+            "templateUrl": [],
+            "viewProviders": [],
+            "inputsClass": [
+                {
+                    "name": "user",
+                    "defaultValue": "null",
+                    "line": 66,
+                    "type": "unknown"
+                }
+            ],
+            "outputsClass": [
+                {
+                    "name": "onCreateAccount",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "line": 75,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogin",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "line": 69,
+                    "type": "EventEmitter"
+                },
+                {
+                    "name": "onLogout",
+                    "defaultValue": "new EventEmitter<Event>()",
+                    "line": 72,
+                    "type": "EventEmitter"
+                }
+            ],
+            "propertiesClass": [],
+            "methodsClass": [],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, Input, Output, EventEmitter } from '@angular/core';\n\n@Component({\n  selector: 'storybook-page',\n  template: `<article>\n    <storybook-header\n      [user]=\"user\"\n      (onLogout)=\"onLogout.emit($event)\"\n      (onLogin)=\"onLogin.emit($event)\"\n      (onCreateAccount)=\"onCreateAccount.emit($event)\"\n    ></storybook-header>\n    <section>\n      <h2>Pages in Storybook</h2>\n      <p>\n        We recommend building UIs with a\n        <a href=\"https://componentdriven.org\" target=\"_blank\" rel=\"noopener noreferrer\">\n          <strong>component-driven</strong>\n        </a>\n        process starting with atomic components and ending with pages.\n      </p>\n      <p>\n        Render pages with mock data. This makes it easy to build and review page states without\n        needing to navigate to them in your app. Here are some handy patterns for managing page data\n        in Storybook:\n      </p>\n      <ul>\n        <li>\n          Use a higher-level connected component. Storybook helps you compose such data from the\n          \"args\" of child component stories\n        </li>\n        <li>\n          Assemble data in the page component from your services. You can mock these services out\n          using Storybook.\n        </li>\n      </ul>\n      <p>\n        Get a guided tutorial on component-driven development at\n        <a href=\"https://www.learnstorybook.com\" target=\"_blank\" rel=\"noopener noreferrer\">\n          Learn Storybook\n        </a>\n        . Read more in the\n        <a href=\"https://storybook.js.org/docs\" target=\"_blank\" rel=\"noopener noreferrer\">\n          docs\n        </a>\n        .\n      </p>\n      <div class=\"tip-wrapper\">\n        <span class=\"tip\">Tip</span> Adjust the width of the canvas with the\n        <svg width=\"10\" height=\"10\" viewBox=\"0 0 12 12\" xmlns=\"http://www.w3.org/2000/svg\">\n          <g fill=\"none\" fillRule=\"evenodd\">\n            <path\n              d=\"M1.5 5.2h4.8c.3 0 .5.2.5.4v5.1c-.1.2-.3.3-.4.3H1.4a.5.5 0 01-.5-.4V5.7c0-.3.2-.5.5-.5zm0-2.1h6.9c.3 0 .5.2.5.4v7a.5.5 0 01-1 0V4H1.5a.5.5 0 010-1zm0-2.1h9c.3 0 .5.2.5.4v9.1a.5.5 0 01-1 0V2H1.5a.5.5 0 010-1zm4.3 5.2H2V10h3.8V6.2z\"\n              id=\"a\"\n              fill=\"#999\"\n            />\n          </g>\n        </svg>\n        Viewports addon in the toolbar\n      </div>\n    </section>\n  </article>`,\n  styleUrls: ['./page.css'],\n})\nexport default class PageComponent {\n  @Input()\n  user: unknown = null;\n\n  @Output()\n  onLogin = new EventEmitter<Event>();\n\n  @Output()\n  onLogout = new EventEmitter<Event>();\n\n  @Output()\n  onCreateAccount = new EventEmitter<Event>();\n}\n\n// export const Page = ({ user, onLogin, onLogout, onCreateAccount }) => (\n//   <article>\n//     <Header user={user} onLogin={onLogin} onLogout={onLogout} onCreateAccount={onCreateAccount} />\n\n// );\n// Page.propTypes = {\n//   user: PropTypes.shape({}),\n//   onLogin: PropTypes.func.isRequired,\n//   onLogout: PropTypes.func.isRequired,\n//   onCreateAccount: PropTypes.func.isRequired,\n// };\n\n// Page.defaultProps = {\n//   user: null,\n// };\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "section {\n  font-family: 'Nunito Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;\n  font-size: 14px;\n  line-height: 24px;\n  padding: 48px 20px;\n  margin: 0 auto;\n  max-width: 600px;\n  color: #333;\n}\n\nh2 {\n  font-weight: 900;\n  font-size: 32px;\n  line-height: 1;\n  margin: 0 0 4px;\n  display: inline-block;\n  vertical-align: top;\n}\n\np {\n  margin: 1em 0;\n}\n\na {\n  text-decoration: none;\n  color: #1ea7fd;\n}\n\nul {\n  padding-left: 30px;\n  margin: 1em 0;\n}\n\nli {\n  margin-bottom: 8px;\n}\n\n.tip {\n  display: inline-block;\n  border-radius: 1em;\n  font-size: 11px;\n  line-height: 12px;\n  font-weight: 700;\n  background: #e7fdd8;\n  color: #66bf3c;\n  padding: 4px 12px;\n  margin-right: 10px;\n  vertical-align: top;\n}\n\n.tip-wrapper {\n  font-size: 13px;\n  line-height: 20px;\n  margin-top: 40px;\n  margin-bottom: 40px;\n}\n\n.tip-wrapper svg {\n  display: inline-block;\n  height: 12px;\n  width: 12px;\n  margin-right: 4px;\n  vertical-align: top;\n  margin-top: 3px;\n}\n\n.tip-wrapper svg path {\n  fill: #1ea7fd;\n}\n",
+                    "styleUrl": "./page.css"
+                }
+            ],
+            "stylesData": ""
+        },
+        {
+            "name": "ShellComponent",
+            "id": "component-ShellComponent-b07634f5313ddd6a0a3d3678321fcae4",
+            "file": "src/app/shared/shell/shell.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-shell",
+            "styleUrls": [
+                "./shell.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./shell.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "isHandset$",
+                    "defaultValue": "this.breakpointObserver\n    .observe([Breakpoints.Handset])\n    .pipe(\n      map((result) => result.matches),\n      shareReplay() //  To make sure multiple async pipes are listening to same observable\n    )",
+                    "type": "Observable<boolean>",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "ngOnInit",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 21
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { BreakpointObserver, Breakpoints } from '@angular/cdk/layout';\nimport { Component, OnInit } from '@angular/core';\nimport { Observable } from 'rxjs';\nimport { map, shareReplay } from 'rxjs/operators';\n\n@Component({\n  selector: 'app-shell',\n  templateUrl: './shell.component.html',\n  styleUrls: ['./shell.component.scss'],\n})\nexport class ShellComponent implements OnInit {\n  isHandset$: Observable<boolean> = this.breakpointObserver\n    .observe([Breakpoints.Handset])\n    .pipe(\n      map((result) => result.matches),\n      shareReplay() //  To make sure multiple async pipes are listening to same observable\n    );\n\n  constructor(private breakpointObserver: BreakpointObserver) {}\n\n  ngOnInit(): void {}\n}\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": ".sidenav-container {\r\n  height: 100%;\r\n}\r\n\r\n.logo {\r\n  font-size: 1.2em;\r\n  cursor: pointer;\r\n  outline: none;\r\n}\r\n\r\n.mat-drawer-side {\r\n  border: none;\r\n  box-shadow: 1px 1px 10px 1px rgba(0, 0, 0, 0.3);\r\n}\r\n\r\n.sidenav {\r\n  width: 200px;\r\n  font-family: sofia-pro;\r\n}\r\n\r\n.sidenav .mat-toolbar {\r\n  background: inherit;\r\n}\r\n\r\n.mat-toolbar.mat-primary {\r\n  position: sticky;\r\n  top: 0;\r\n  z-index: 1;\r\n}\r\n\r\n.fill-space {\r\n  flex: 1 1 auto;\r\n}\r\n\r\ni {\r\n  font-style: normal;\r\n  font-size: 1.25em;\r\n  margin-right: 16px;\r\n}\r\n\r\n.avatar {\r\n  width: 1.75em;\r\n  border-radius: 50%;\r\n  margin: 0 10px 5px;\r\n}\r\n",
+                    "styleUrl": "./shell.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "breakpointObserver",
+                        "type": "BreakpointObserver"
+                    }
+                ],
+                "line": 17,
+                "jsdoctags": [
+                    {
+                        "name": "breakpointObserver",
+                        "type": "BreakpointObserver",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "implements": [
+                "OnInit"
+            ],
+            "templateData": "<mat-sidenav-container class=\"sidenav-container\">\r\n  <!-- SideNav -->\r\n  <mat-sidenav\r\n    #drawer\r\n    class=\"sidenav\"\r\n    fixedInViewport\r\n    [attr.role]=\"(isHandset$ | async) ? 'dialog' : 'navigation'\"\r\n    [mode]=\"(isHandset$ | async) ? 'over' : 'side'\"\r\n    [opened]=\"false\"\r\n  >\r\n    <mat-toolbar>Menu</mat-toolbar>\r\n    <mat-nav-list>\r\n      <a mat-list-item routerLink=\"/\" (click)=\"drawer.close()\">Home</a>\r\n      <a mat-list-item routerLink=\"/login\" (click)=\"drawer.close()\">Login</a>\r\n      <a mat-list-item routerLink=\"/kanban\" (click)=\"drawer.close()\"\r\n        >Kanban Demo</a\r\n      >\r\n      <a mat-list-item routerLink=\"/customers\" (click)=\"drawer.close()\"\r\n        >SSR Demo</a\r\n      >\r\n    </mat-nav-list>\r\n  </mat-sidenav>\r\n\r\n  <!-- Content -->\r\n  <mat-sidenav-content>\r\n    <mat-toolbar>\r\n      <button\r\n        *ngIf=\"isHandset$ | async\"\r\n        type=\"button\"\r\n        aria-label=\"Toggle sidenav\"\r\n        mat-icon-button\r\n        (click)=\"drawer.toggle()\"\r\n      >\r\n        <mat-icon aria-label=\"Side nav toggle icon\">menu</mat-icon>\r\n      </button>\r\n      <span class=\"logo\" routerLink=\"/\">🔥 Angular Firestarter</span>\r\n\r\n      <span class=\"fill-space\"></span>\r\n      <div *ngIf=\"!(isHandset$ | async)\">\r\n        <a mat-button routerLink=\"/kanban\">🍱 Kanban Demo</a>\r\n        <a mat-button routerLink=\"/login\">🔑 Login</a>\r\n      </div>\r\n\r\n      <button mat-icon-button [matMenuTriggerFor]=\"menu\">\r\n        <mat-icon>more_vert</mat-icon>\r\n      </button>\r\n\r\n      <mat-menu #menu>\r\n        <a mat-menu-item href=\"https://fireship.page.link/slak\"\r\n          ><i>💬</i><span>Chat on Slack</span></a\r\n        >\r\n        <a\r\n          mat-menu-item\r\n          href=\"https://github.com/codediodeio/angular-firestarter\"\r\n          ><i>💾</i><span>Code on Github</span></a\r\n        >\r\n        <a mat-menu-item href=\"https://fireship.io/course/angular\"\r\n          ><i>🔥</i><span>Full Course on Fireship</span></a\r\n        >\r\n        <a\r\n          mat-menu-item\r\n          href=\"https://www.youtube.com/channel/UCsBjURrPoezykLs9EqgamOA\"\r\n          ><i>📺</i><span>Watch on the YouTube</span></a\r\n        >\r\n      </mat-menu>\r\n    </mat-toolbar>\r\n\r\n    <ng-content> </ng-content>\r\n  </mat-sidenav-content>\r\n</mat-sidenav-container>\r\n"
+        },
+        {
+            "name": "TaskDialogComponent",
+            "id": "component-TaskDialogComponent-31fae5be3a8aebc53be40825ca1faf41",
+            "file": "src/app/kanban/dialogs/task-dialog/task-dialog.component.ts",
+            "encapsulation": [],
+            "entryComponents": [],
+            "inputs": [],
+            "outputs": [],
+            "providers": [],
+            "selector": "app-task-dialog",
+            "styleUrls": [
+                "./task-dialog.component.scss"
+            ],
+            "styles": [],
+            "templateUrl": [
+                "./task-dialog.component.html"
+            ],
+            "viewProviders": [],
+            "inputsClass": [],
+            "outputsClass": [],
+            "propertiesClass": [
+                {
+                    "name": "data",
+                    "type": "TaskViewModel",
+                    "optional": false,
+                    "description": "",
+                    "line": 17,
+                    "decorators": [
+                        {
+                            "name": "Inject",
+                            "stringifiedArguments": "MAT_DIALOG_DATA"
+                        }
+                    ],
+                    "modifierKind": [
+                        114
+                    ]
+                },
+                {
+                    "name": "labelOptions",
+                    "defaultValue": "['purple', 'blue', 'green', 'yellow', 'red', 'gray']",
+                    "type": "[]",
+                    "optional": false,
+                    "description": "",
+                    "line": 12
+                }
+            ],
+            "methodsClass": [
+                {
+                    "name": "handleTaskDelete",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 24
+                },
+                {
+                    "name": "onNoClick",
+                    "args": [],
+                    "optional": false,
+                    "returnType": "void",
+                    "typeParameters": [],
+                    "line": 20
+                }
+            ],
+            "hostBindings": [],
+            "hostListeners": [],
+            "description": "",
+            "rawdescription": "",
+            "type": "component",
+            "sourceCode": "import { Component, Inject } from '@angular/core';\r\nimport { MatDialogRef, MAT_DIALOG_DATA } from '@angular/material/dialog';\r\nimport { TaskViewModel } from '../../components/board/container/board-container/board-container.component';\r\nimport { BoardService } from '../../services/board.service';\r\n\r\n@Component({\r\n  selector: 'app-task-dialog',\r\n  templateUrl: './task-dialog.component.html',\r\n  styleUrls: ['./task-dialog.component.scss'],\r\n})\r\nexport class TaskDialogComponent {\r\n  labelOptions = ['purple', 'blue', 'green', 'yellow', 'red', 'gray'];\r\n\r\n  constructor(\r\n    private dialogRef: MatDialogRef<TaskDialogComponent>,\r\n    private boardService: BoardService,\r\n    @Inject(MAT_DIALOG_DATA) public data: TaskViewModel\r\n  ) {}\r\n\r\n  onNoClick(): void {\r\n    this.dialogRef.close();\r\n  }\r\n\r\n  handleTaskDelete(): void {\r\n    this.boardService.removeTask(this.data.boardId, this.data.task);\r\n    this.dialogRef.close();\r\n  }\r\n}\r\n",
+            "assetsDirs": [],
+            "styleUrlsData": [
+                {
+                    "data": "",
+                    "styleUrl": "./task-dialog.component.scss"
+                }
+            ],
+            "stylesData": "",
+            "constructorObj": {
+                "name": "constructor",
+                "description": "",
+                "args": [
+                    {
+                        "name": "dialogRef",
+                        "type": "MatDialogRef<TaskDialogComponent>"
+                    },
+                    {
+                        "name": "boardService",
+                        "type": "BoardService"
+                    },
+                    {
+                        "name": "data",
+                        "type": "TaskViewModel"
+                    }
+                ],
+                "line": 12,
+                "jsdoctags": [
+                    {
+                        "name": "dialogRef",
+                        "type": "MatDialogRef<TaskDialogComponent>",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "boardService",
+                        "type": "BoardService",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    },
+                    {
+                        "name": "data",
+                        "type": "TaskViewModel",
+                        "tagName": {
+                            "text": "param"
+                        }
+                    }
+                ]
+            },
+            "templateData": "<!-- Title -->\r\n<h1 mat-dialog-title>Task</h1>\r\n\r\n<!-- Content -->\r\n<div mat-dialog-content class=\"content\">\r\n  <mat-form-field>\r\n    <textarea\r\n      placeholder=\"Task description\"\r\n      matInput\r\n      [(ngModel)]=\"data.task.description\"\r\n    ></textarea>\r\n  </mat-form-field>\r\n  <br />\r\n  <mat-button-toggle-group\r\n    #group=\"matButtonToggleGroup\"\r\n    [(ngModel)]=\"data.task.label\"\r\n  >\r\n    <mat-button-toggle *ngFor=\"let opt of labelOptions\" [value]=\"opt\">\r\n      <mat-icon [ngClass]=\"opt\">{{\r\n        opt === \"gray\" ? \"check_circle\" : \"lens\"\r\n      }}</mat-icon>\r\n    </mat-button-toggle>\r\n  </mat-button-toggle-group>\r\n</div>\r\n\r\n<!-- Actions -->\r\n<div mat-dialog-actions>\r\n  <button mat-button [mat-dialog-close]=\"data\" cdkFocusInitial>\r\n    {{ data.isNew ? \"Add Task\" : \"Update Task\" }}\r\n  </button>\r\n</div>\r\n"
+        }
+    ],
+    "modules": [
+        {
+            "name": "AppModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "AppRoutingModule"
+                        },
+                        {
+                            "name": "SharedModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": [
+                        {
+                            "name": "AppComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "AppRoutingModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "HomeModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "HomePageComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "KanbanModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "BoardComponent"
+                        },
+                        {
+                            "name": "BoardContainerComponent"
+                        },
+                        {
+                            "name": "BoardDialogComponent"
+                        },
+                        {
+                            "name": "BoardListContainerComponent"
+                        },
+                        {
+                            "name": "BoardListContainerComponent"
+                        },
+                        {
+                            "name": "BoardListPresentationComponent"
+                        },
+                        {
+                            "name": "TaskDialogComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "KanbanRoutingModule"
+                        },
+                        {
+                            "name": "SharedModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "KanbanRoutingModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "SharedModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "ShellComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": [
+                        {
+                            "name": "ShellComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "UserModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": [
+                        {
+                            "name": "EmailLoginComponent"
+                        },
+                        {
+                            "name": "GoogleSigninDirective"
+                        },
+                        {
+                            "name": "LoginPageComponent"
+                        }
+                    ]
+                },
+                {
+                    "type": "imports",
+                    "elements": [
+                        {
+                            "name": "SharedModule"
+                        },
+                        {
+                            "name": "UserRoutingModule"
+                        }
+                    ]
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        },
+        {
+            "name": "UserRoutingModule",
+            "children": [
+                {
+                    "type": "providers",
+                    "elements": []
+                },
+                {
+                    "type": "declarations",
+                    "elements": []
+                },
+                {
+                    "type": "imports",
+                    "elements": []
+                },
+                {
+                    "type": "exports",
+                    "elements": []
+                },
+                {
+                    "type": "bootstrap",
+                    "elements": []
+                },
+                {
+                    "type": "classes",
+                    "elements": []
+                }
+            ]
+        }
+    ],
+    "miscellaneous": {
+        "variables": [
+            {
+                "name": "components",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/shared/shared.module.ts",
+                "type": "[]",
+                "defaultValue": "[ShellComponent]"
+            },
+            {
+                "name": "context",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/test.ts",
+                "type": "",
+                "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.prod.ts",
+                "type": "object",
+                "defaultValue": "{\n  production: true,\n  firebase: firebaseConfig,\n}"
+            },
+            {
+                "name": "environment",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.ts",
+                "type": "object",
+                "defaultValue": "{\n  production: false,\n  firebase: firebaseConfig,\n}"
+            },
+            {
+                "name": "firebaseConfig",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/environments/environment.config.ts",
+                "type": "object",
+                "defaultValue": "{\r\n  apiKey: 'AIzaSyA5ygVuqqlNIeqsiZix4kOoJM_FJgk3k0w',\r\n  authDomain: 'firestarterdemo-af8af.firebaseapp.com',\r\n  databaseURL: 'https://firestarterdemo-af8af.firebaseio.com',\r\n  projectId: 'firestarterdemo-af8af',\r\n  storageBucket: 'firestarterdemo-af8af.appspot.com',\r\n  messagingSenderId: '69862143228',\r\n  appId: '1:69862143228:web:8f54dba1c715c6962fd379',\r\n  measurementId: 'G-KSNRBJLPVP',\r\n}"
+            },
+            {
+                "name": "Large",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Button.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "LoggedIn",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Header.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "LoggedIn",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Page.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "LoggedOut",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Header.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "LoggedOut",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Page.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "modules",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/app/shared/shared.module.ts",
+                "type": "[]",
+                "defaultValue": "[\n  CommonModule,\n  RouterModule,\n  MatToolbarModule,\n  MatIconModule,\n  LayoutModule,\n  MatButtonModule,\n  MatSidenavModule,\n  MatListModule,\n  MatMenuModule,\n  MatIconModule,\n  MatCardModule,\n  MatFormFieldModule,\n  MatInputModule,\n  MatSnackBarModule,\n]"
+            },
+            {
+                "name": "Primary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Button.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "require",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/test.ts",
+                "type": "literal type"
+            },
+            {
+                "name": "Secondary",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Button.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Small",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Button.stories.ts",
+                "type": "",
+                "defaultValue": "Template.bind({})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Button.stories.ts",
+                "type": "Story<Button>",
+                "defaultValue": "(args: Button) => ({\n  component: Button,\n  props: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Header.stories.ts",
+                "type": "Story<Header>",
+                "defaultValue": "(args: Header) => ({\n  component: Header,\n  props: args,\n})"
+            },
+            {
+                "name": "Template",
+                "ctype": "miscellaneous",
+                "subtype": "variable",
+                "file": "src/stories/Page.stories.ts",
+                "type": "Story<Page>",
+                "defaultValue": "(args: Page) => ({\n  component: Page,\n  props: args,\n})"
+            }
+        ],
+        "functions": [],
+        "typealiases": [
+            {
+                "name": "BoardUpdate",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "Override<Board | literal type>",
+                "file": "src/app/kanban/services/board.service.ts",
+                "description": "",
+                "kind": 161
+            },
+            {
+                "name": "LoginType",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "\"login\" | \"signup\" | \"reset\"",
+                "file": "src/app/user/components/email-login/email-login.component.ts",
+                "description": "",
+                "kind": 168
+            },
+            {
+                "name": "Override",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "",
+                "file": "src/app/kanban/services/board.service.ts",
+                "description": "",
+                "kind": 169
+            },
+            {
+                "name": "TaskViewModel",
+                "ctype": "miscellaneous",
+                "subtype": "typealias",
+                "rawtype": "literal type",
+                "file": "src/app/kanban/components/board/container/board-container/board-container.component.ts",
+                "description": "",
+                "kind": 165
+            }
+        ],
+        "enumerations": [
+            {
+                "name": "Collections",
+                "childs": [
+                    {
+                        "name": "Boards",
+                        "value": "boards"
+                    }
+                ],
+                "ctype": "miscellaneous",
+                "subtype": "enum",
+                "description": "",
+                "file": "src/app/kanban/enums/collections.enum.ts"
+            }
+        ],
+        "groupedVariables": {
+            "src/app/shared/shared.module.ts": [
+                {
+                    "name": "components",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/shared.module.ts",
+                    "type": "[]",
+                    "defaultValue": "[ShellComponent]"
+                },
+                {
+                    "name": "modules",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/app/shared/shared.module.ts",
+                    "type": "[]",
+                    "defaultValue": "[\n  CommonModule,\n  RouterModule,\n  MatToolbarModule,\n  MatIconModule,\n  LayoutModule,\n  MatButtonModule,\n  MatSidenavModule,\n  MatListModule,\n  MatMenuModule,\n  MatIconModule,\n  MatCardModule,\n  MatFormFieldModule,\n  MatInputModule,\n  MatSnackBarModule,\n]"
+                }
+            ],
+            "src/test.ts": [
+                {
+                    "name": "context",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/test.ts",
+                    "type": "",
+                    "defaultValue": "require.context('./', true, /\\.spec\\.ts$/)"
+                },
+                {
+                    "name": "require",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/test.ts",
+                    "type": "literal type"
+                }
+            ],
+            "src/environments/environment.prod.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.prod.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  production: true,\n  firebase: firebaseConfig,\n}"
+                }
+            ],
+            "src/environments/environment.ts": [
+                {
+                    "name": "environment",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.ts",
+                    "type": "object",
+                    "defaultValue": "{\n  production: false,\n  firebase: firebaseConfig,\n}"
+                }
+            ],
+            "src/environments/environment.config.ts": [
+                {
+                    "name": "firebaseConfig",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/environments/environment.config.ts",
+                    "type": "object",
+                    "defaultValue": "{\r\n  apiKey: 'AIzaSyA5ygVuqqlNIeqsiZix4kOoJM_FJgk3k0w',\r\n  authDomain: 'firestarterdemo-af8af.firebaseapp.com',\r\n  databaseURL: 'https://firestarterdemo-af8af.firebaseio.com',\r\n  projectId: 'firestarterdemo-af8af',\r\n  storageBucket: 'firestarterdemo-af8af.appspot.com',\r\n  messagingSenderId: '69862143228',\r\n  appId: '1:69862143228:web:8f54dba1c715c6962fd379',\r\n  measurementId: 'G-KSNRBJLPVP',\r\n}"
+                }
+            ],
+            "src/stories/Button.stories.ts": [
+                {
+                    "name": "Large",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Button.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Primary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Button.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Secondary",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Button.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Small",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Button.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Button.stories.ts",
+                    "type": "Story<Button>",
+                    "defaultValue": "(args: Button) => ({\n  component: Button,\n  props: args,\n})"
+                }
+            ],
+            "src/stories/Header.stories.ts": [
+                {
+                    "name": "LoggedIn",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Header.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "LoggedOut",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Header.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Header.stories.ts",
+                    "type": "Story<Header>",
+                    "defaultValue": "(args: Header) => ({\n  component: Header,\n  props: args,\n})"
+                }
+            ],
+            "src/stories/Page.stories.ts": [
+                {
+                    "name": "LoggedIn",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Page.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "LoggedOut",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Page.stories.ts",
+                    "type": "",
+                    "defaultValue": "Template.bind({})"
+                },
+                {
+                    "name": "Template",
+                    "ctype": "miscellaneous",
+                    "subtype": "variable",
+                    "file": "src/stories/Page.stories.ts",
+                    "type": "Story<Page>",
+                    "defaultValue": "(args: Page) => ({\n  component: Page,\n  props: args,\n})"
+                }
+            ]
+        },
+        "groupedFunctions": {},
+        "groupedEnumerations": {
+            "src/app/kanban/enums/collections.enum.ts": [
+                {
+                    "name": "Collections",
+                    "childs": [
+                        {
+                            "name": "Boards",
+                            "value": "boards"
+                        }
+                    ],
+                    "ctype": "miscellaneous",
+                    "subtype": "enum",
+                    "description": "",
+                    "file": "src/app/kanban/enums/collections.enum.ts"
+                }
+            ]
+        },
+        "groupedTypeAliases": {
+            "src/app/kanban/services/board.service.ts": [
+                {
+                    "name": "BoardUpdate",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "Override<Board | literal type>",
+                    "file": "src/app/kanban/services/board.service.ts",
+                    "description": "",
+                    "kind": 161
+                },
+                {
+                    "name": "Override",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "",
+                    "file": "src/app/kanban/services/board.service.ts",
+                    "description": "",
+                    "kind": 169
+                }
+            ],
+            "src/app/user/components/email-login/email-login.component.ts": [
+                {
+                    "name": "LoginType",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "\"login\" | \"signup\" | \"reset\"",
+                    "file": "src/app/user/components/email-login/email-login.component.ts",
+                    "description": "",
+                    "kind": 168
+                }
+            ],
+            "src/app/kanban/components/board/container/board-container/board-container.component.ts": [
+                {
+                    "name": "TaskViewModel",
+                    "ctype": "miscellaneous",
+                    "subtype": "typealias",
+                    "rawtype": "literal type",
+                    "file": "src/app/kanban/components/board/container/board-container/board-container.component.ts",
+                    "description": "",
+                    "kind": 165
+                }
+            ]
+        }
+    },
+    "routes": {
+        "name": "<root>",
+        "kind": "module",
+        "className": "AppModule",
+        "children": [
+            {
+                "name": "routes",
+                "filename": "src/app/app-routing.module.ts",
+                "module": "AppRoutingModule",
+                "kind": "module"
+            }
+        ]
+    },
+    "coverage": {
+        "count": 4,
+        "status": "low",
+        "files": [
+            {
+                "filePath": "e2e/src/app.po.ts",
+                "type": "class",
+                "linktype": "classe",
+                "name": "AppPage",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/app.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "AppComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/2",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/home/pages/home/home-page.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HomePageComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/kanban/board.interface.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "Board",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/kanban/board.interface.ts",
+                "type": "interface",
+                "linktype": "interface",
+                "name": "Task",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/kanban/components/board-list/container/board-list-container/board-list-container.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "BoardListContainerComponent",
+                "coveragePercent": 12,
+                "coverageCount": "1/8",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/kanban/components/board-list/presentation/board-list-presentation.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "BoardListPresentationComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/8",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/kanban/components/board/container/board-container/board-container.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "BoardContainerComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/9",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/kanban/components/board/presentation/board-presentation.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "BoardComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/8",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/kanban/dialogs/board-dialog/board-dialog.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "BoardDialogComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/kanban/dialogs/task-dialog/task-dialog.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "TaskDialogComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/6",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/kanban/services/board.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "BoardService",
+                "coveragePercent": 75,
+                "coverageCount": "6/8",
+                "status": "good"
+            },
+            {
+                "filePath": "src/app/shared/services/snack.service.ts",
+                "type": "injectable",
+                "linktype": "injectable",
+                "name": "SnackService",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/shared.module.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "components",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/shared.module.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "modules",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/shared/shell/shell.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ShellComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/4",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/user/components/email-login/email-login.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "EmailLoginComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/9",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/user/directives/google-signin.directive.ts",
+                "type": "directive",
+                "linktype": "directive",
+                "name": "GoogleSigninDirective",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/user/guards/auth.guard.ts",
+                "type": "guard",
+                "linktype": "guard",
+                "name": "AuthGuard",
+                "coveragePercent": 0,
+                "coverageCount": "0/3",
+                "status": "low"
+            },
+            {
+                "filePath": "src/app/user/pages/login/login-page.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "LoginPageComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.config.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "firebaseConfig",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.prod.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/environments/environment.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "environment",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Large",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Primary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Secondary",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Small",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Button.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Header.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LoggedIn",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Header.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LoggedOut",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Header.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Page.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LoggedIn",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Page.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "LoggedOut",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/Page.stories.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "Template",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/button.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "ButtonComponent",
+                "coveragePercent": 83,
+                "coverageCount": "5/6",
+                "status": "very-good"
+            },
+            {
+                "filePath": "src/stories/header.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "HeaderComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/stories/page.component.ts",
+                "type": "component",
+                "linktype": "component",
+                "name": "PageComponent",
+                "coveragePercent": 0,
+                "coverageCount": "0/5",
+                "status": "low"
+            },
+            {
+                "filePath": "src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "context",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            },
+            {
+                "filePath": "src/test.ts",
+                "type": "variable",
+                "linktype": "miscellaneous",
+                "linksubtype": "variable",
+                "name": "require",
+                "coveragePercent": 0,
+                "coverageCount": "0/1",
+                "status": "low"
+            }
+        ]
+    }
+}

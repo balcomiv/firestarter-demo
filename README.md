@@ -65,3 +65,13 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 - git merge origin/master
 
 - git checkout master
+
+## Storybook
+
+- https://medium.com/storybookjs/storybook-6-0-1e14a2071000
+
+- https://medium.com/storybookjs/storybook-6-0-1e14a2071000
+
+## Component Driven Design
+
+- https://www.componentdriven.org/

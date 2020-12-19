@@ -35,6 +35,6 @@ export class BoardListPresentationComponent {
   }
 
   onOpenBoardDialog(): void {
-    this.openBoardDialog.next();
+    this.openBoardDialog.emit();
   }
 }

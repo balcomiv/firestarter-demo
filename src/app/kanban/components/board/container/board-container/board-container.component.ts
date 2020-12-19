@@ -1,6 +1,9 @@
-import { CdkDragDrop } from '@angular/cdk/drag-drop';
+import { CdkDragDrop, moveItemInArray } from '@angular/cdk/drag-drop';
 import { Component, Input, OnInit } from '@angular/core';
+import { MatDialog, MatDialogRef } from '@angular/material/dialog';
 import { Board, Task } from 'src/app/kanban/board.interface';
+import { TaskDialogComponent } from 'src/app/kanban/dialogs/task-dialog/task-dialog.component';
+import { BoardService } from 'src/app/kanban/services/board.service';
 
 //  Fix Me - The tutorial doesn't adhere to any strict checking or architecture best practices.
 //  this is a hack, just to move forward with tutorial as is.
@@ -19,60 +22,61 @@ export type TaskViewModel = {
 export class BoardContainerComponent implements OnInit {
   @Input() board?: Board; //  Fix Me, I don't like inputs in a smart container
 
-  constructor() {}
+  constructor(private boardService: BoardService, private dialog: MatDialog) {}
 
   ngOnInit(): void {}
 
   taskDrop(event: CdkDragDrop<string[]>): void {
-    alert('Task drop');
+    if (!(this.board && this.board.id && this.board.tasks)) {
+      console.error('Board/Tasks not set!');
+      return;
+    }
+
+    moveItemInArray(this.board.tasks, event.previousIndex, event.currentIndex);
+    this.boardService.updateTasks(this.board.id, this.board.tasks);
   }
 
   openDialog(task?: Task, idx?: number): void {
-    alert('openDialog');
+    console.log('board', this.board);
+
+    const newTask = { label: 'purple' };
+    const dialogRef = this.dialog.open(TaskDialogComponent, {
+      width: '500px',
+      data: task
+        ? { task: { ...task }, isNew: false, boardId: this.board?.id, idx }
+        : { task: newTask, isNew: true },
+    });
+
+    this.setCloseCallback(dialogRef);
   }
 
-  // taskDrop(event: CdkDragDrop<string[]>): void {
-  //   if (!(this.board && this.board.id && this.board.tasks)) {
-  //     console.error('Board/Tasks not set!');
-  //     return;
-  //   }
-
-  //   moveItemInArray(this.board.tasks, event.previousIndex, event.currentIndex);
-  //   this.boardService.updateTasks(this.board.id, this.board.tasks);
-  // }
-
-  // openDialog(task?: Task, idx?: number): void {
-  //   const newTask = { label: 'purple' };
-  //   const dialogRef = this.dialog.open(TaskDialogComponent, {
-  //     width: '500px',
-  //     data: task
-  //       ? { task: { ...task }, isNew: false, boardId: this.board?.id, idx }
-  //       : { task: newTask, isNew: true },
-  //   });
-
-  //   dialogRef.afterClosed().subscribe((result) => {
-  //     if (result && this.isValidTaskViewModel(result)) {
-  //       if (!(this.board && this.board.id && this.board.tasks)) {
-  //         console.error('Invalid board!');
-  //         return;
-  //       }
-  //       if (result.isNew) {
-  //         this.boardService.updateTasks(this.board.id, [
-  //           ...this.board.tasks,
-  //           result.task,
-  //         ]);
-  //       } else {
-  //         if (!result.idx) {
-  //           console.error('Invalid idx!');
-  //           return;
-  //         }
-  //         const update = this.board.tasks;
-  //         update.splice(result.idx, 1, result.task);
-  //         this.boardService.updateTasks(this.board.id, this.board.tasks);
-  //       }
-  //     }
-  //   });
-  // }
+  private setCloseCallback(
+    dialogRef: MatDialogRef<TaskDialogComponent, TaskViewModel>
+  ): void {
+    dialogRef.afterClosed().subscribe((result) => {
+      console.log({ result });
+      if (result && this.isValidTaskViewModel(result)) {
+        if (!(this.board && this.board.id && this.board.tasks)) {
+          console.error('Invalid board!');
+          return;
+        }
+        if (result.isNew) {
+          this.boardService.updateTasks(this.board.id, [
+            ...this.board.tasks,
+            result.task,
+          ]);
+        } else {
+          if (!result.idx) {
+            console.error('Invalid idx!');
+            return;
+          }
+          const update = this.board.tasks;
+          update.splice(result.idx, 1, result.task);
+          this.boardService.updateTasks(this.board.id, this.board.tasks);
+        }
+      }
+    });
+  }
 
   //#region TODO: Remove or move to utils if really needed
 
@@ -103,7 +107,7 @@ export class BoardContainerComponent implements OnInit {
     }
 
     const taskViewModel = value as TaskViewModel;
-    if (!(taskViewModel && taskViewModel.boardId && taskViewModel.task)) {
+    if (!(taskViewModel && taskViewModel.task)) {
       console.error('TaskViewModel properties not set!');
       return false;
     }

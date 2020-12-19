@@ -46,3 +46,12 @@
   background: gray;
   text-decoration: line-through;
 }
+
+.outer-card {
+  .handle {
+    position: relative;
+    top: 5px;
+    left: 0;
+    cursor: move;
+  }
+}

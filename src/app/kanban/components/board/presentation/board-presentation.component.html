@@ -1,5 +1,6 @@
 <ng-container *ngIf="board; else noBoard">
-  <mat-card class="outer-card">
+  <mat-card cdkDrag class="outer-card">
+    <mat-icon cdkDragHandle class="handle">drag_indicator</mat-icon>
     <mat-card-header>
       <!-- Slot for the handle -->
       <ng-content></ng-content>

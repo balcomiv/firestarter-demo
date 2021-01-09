@@ -38,6 +38,10 @@ To get more help on the Angular CLI use `ng help` or go check out the [Angular C
 
 - https://github.com/codediodeio/angular-firestarter
 
+### Material
+- ng add @angular/material
+- https://fireship.io/courses/angular/app-material/ (shows custom theme too)
+
 ### Positronx - auth tutorial
 
 - https://www.positronx.io/angular-firebase-google-login-auth-system-tutorial/
